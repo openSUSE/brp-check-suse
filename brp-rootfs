@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# If using normal root, avoid check. Will give too much false positive
+if [ -z "$RPM_BUILD_ROOT" ]; then
+        exit 0
+fi
+
+OUT_OF_FS=0
+for f in `find $RPM_BUILD_ROOT/bin $RPM_BUILD_ROOT/sbin \
+	  -type f -exec file {} \; 2>/dev/null | \
+	  sed -n -e 's/^\(.*\):[[:space:]]*ELF.*/\1/p'` ; do
+    case ${f##$RPM_BUILD_ROOT} in
+	/bin/rpm|/sbin/install-info)
+	    continue
+	    ;;
+    esac
+	
+    ldd $f | grep -qE '/(usr|opt)' && {
+	echo "binary ${f##$RPM_BUILD_ROOT} is linked against libraries in /usr or /opt"
+	ldd $f | grep -E '/(usr|opt)'
+	OUT_OF_FS=1
+    }
+done
+
+for f in `find $RPM_BUILD_ROOT/lib $RPM_BUILD_ROOT/lib64 \
+	  -type f -exec file {} \; 2>/dev/null | \
+	  grep "shared object" | \
+	  grep -v "/security/" |
+	  grep -v "/evms/" |
+	  grep -v "/libnss_" |
+	  sed -n -e 's/^\(.*\):[[:space:]]*ELF.*/\1/p'` ; do
+    ldd $f 2>/dev/null | grep -qE '/(usr|opt)' && {
+	echo "library ${f##$RPM_BUILD_ROOT} is linked against libraries in /usr or /opt"
+	ldd $f | grep -E '/(usr|opt)'
+	OUT_OF_FS=1
+    }
+done
+
+if [ $OUT_OF_FS -eq 1 ]; then
+  echo ""
+  echo "Please adjust the paths in your package"
+  echo
+  exit 1
+fi
+
+exit 0

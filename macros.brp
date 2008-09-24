@@ -1,0 +1,17 @@
+%_suse_os_install_post    \
+    %{suse_check} \
+    /usr/lib/rpm/brp-compress \
+    /usr/lib/rpm/brp-strip-debug \
+    /usr/lib/rpm/brp-check-la \
+    /usr/lib/rpm/brp-symlink \
+    /usr/lib/rpm/brp-desktop \
+    /usr/lib/rpm/brp-rpath \
+    /usr/lib/rpm/brp-pie \
+    /usr/lib/rpm/brp-rootfs \
+    /usr/lib/rpm/brp-tcl \
+    /usr/lib/rpm/brp-check-python \
+    /usr/lib/rpm/brp-check-bytecode-version \
+    /usr/lib/rpm/brp-boot-scripts \
+    /usr/lib/rpm/brp-hook \
+%{nil}
+

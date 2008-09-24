@@ -1,0 +1,44 @@
+#!/bin/sh
+# If using normal root, avoid changing anything.
+if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
+	echo "RPM_BUILD_ROOT is not set or set to / : skipping strip"
+        exit 0
+fi
+if [ "$NO_BRP_STRIP_DEBUG" = "true" ] ; then
+	echo "NO_BRP_STRIP_DEBUG is set: skipping strip"
+	exit 0
+fi
+
+# Strip ELF binaries
+for f in `find $RPM_BUILD_ROOT -type f -perm +0111 -exec file {} \; | \
+	grep -v '/usr/lib/debug/' | \
+	grep -v '/lib/modules/' | \
+	grep -v '/opt/cross/' | \
+	grep -v '^/proc/' | \
+	sed -n -e 's/^\(.*\):[ 	]*ELF.*, not stripped/\1/p'`; do
+        chmod u+w $f || :
+	strip -p --strip-debug $f || :
+done
+
+# Strip static libs part1
+for f in `find $RPM_BUILD_ROOT -type f -name "*.a" -exec file {} \; | \
+       grep -v '/usr/lib/debug/' | \
+       grep -v '/lib/modules/' | \
+       grep -v '/opt/cross/' | \
+       grep -v '^/proc/' | \
+       sed -n -e 's/^\(.*\):[  ]*ELF.*, not stripped/\1/p'`; do
+       chmod u+w $f || :
+       strip -p --strip-debug $f || :
+done
+
+# Strip static libs part2
+for f in `find $RPM_BUILD_ROOT -type f -name "*.a" -exec file {} \; | \
+       grep -v '/usr/lib/debug/' | \
+       grep -v '/lib/modules/' | \
+       grep -v '/opt/cross/' | \
+       grep -v '^/proc/' | \
+       sed -n -e 's/^\(.*\):[  ]*current ar archive/\1/p'`; do
+       chmod u+w $f || :
+       strip -p --strip-debug $f || :
+done
+

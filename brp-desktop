@@ -1,0 +1,4 @@
+#!/bin/sh
+
+perl -I/usr/lib/rpm/brp-desktop.data -MXML::Parser /usr/lib/rpm/brp-desktop.data/xdg_menu --root-menu /usr/lib/rpm/brp-desktop.data/applications.menu  --format validate
+

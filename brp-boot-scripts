@@ -1,0 +1,205 @@
+#!/bin/bash
+#
+# brp-boot-scripts: Simply check the init and boot scripts
+#	for LSB compliance, on errors throw out messages.
+#
+# Author: Werner Fink <werner@suse.de>
+
+# Allow empty stop tags but warn about
+nonfatalnull=no
+
+test -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" && exit 0
+typeset -r INTIDIR=$RPM_BUILD_ROOT/etc/init.d/
+test -d "$INTIDIR" || exit 0
+ 
+shopt -s extglob
+typeset -i ret=0
+scripts=""
+
+for p in ${INTIDIR}* ; do
+    test -d "$p" && continue
+    test -e "$p" || continue
+    s=${p##*/}
+    if test ! -s "$p" ; then
+	echo "E: File \`$s' with zero size found in ${INTIDIR}!"
+	let ret++
+	continue
+    fi
+    if test ! -x "$p" ; then
+	test "$RPM_PACKAGE_NAME" = "aaa_base" -a "$s" = "README" && continue
+	echo "E: File \`$s' in ${INTIDIR} is not executable!"
+	let ret++
+	continue
+    fi
+    case "$s" in
+    .*)
+	echo "E: Hidden file \`$s' found in ${INTIDIR}!"
+	let ret++
+	continue
+	;;
+    *~*)
+	echo "E: Backup file \`$s' found in ${INTIDIR}!"
+	let ret++
+	continue
+	;;
+    *.@(rpm|ba@(k|ck|ckup)|old|new|org|orig|save|swp|core))
+	echo "E: Invalid file \`$s' found in ${INTIDIR}!"
+	let ret++
+	continue
+	;;
+    *.local)
+	case "${s%.*}" in
+	halt|boot|after|before)
+	    echo "E: Reserved file \`$s' found in ${INTIDIR}!"
+	    ;;
+	*)
+	    echo "E: Invalid file \`$s' found in ${INTIDIR}!"
+	    ;;
+	esac
+	let ret++
+	continue
+	;;
+    boot|rc|skeleton*|powerfail|halt|reboot|single)
+	test "$RPM_PACKAGE_NAME" = "aaa_base" && continue
+	echo "E: Reserved file \`$s' found in ${INTIDIR}!"
+	let ret++
+	continue
+	;;
+    rx)
+	test "$RPM_PACKAGE_NAME" = "xdmsc" && continue
+	echo "E: Reserved file \`$s' found in ${INTIDIR}!"
+	let ret++
+	continue
+	;;
+    esac
+    scripts="${scripts:+${scripts} }$s"
+done
+
+test -n "$scripts" || exit 0
+
+#
+# Uses global variables $head for the LSB header
+# and $s the name of the script using this.
+#
+checkhead ()
+{
+    local IFS=$'\n'
+    local -i flags=0
+    local line tag val
+
+    for line in $head; do
+	case "$line" in
+	\#\#\#*)
+	    continue
+	    ;;
+	\#*:*)
+	    tag=${line%%:*}
+	    tag=${tag#\# }
+	    val=${line#*:}
+	    val=${val## }
+	    ;;
+	*)
+	    continue
+	    ;;
+	esac
+	case "$tag" in
+	X-*Should-@(Start|Stop))
+	    echo "E: File \`$s' uses obsolete keyword \`$tag', should use \`Should${tag#*Should}'!"
+	    let ret++
+	    ;;
+	Provides)
+	    test -n "$val" || continue
+	    let 'flags|=0x0001'
+	    ;;
+	Required-Start)
+	    let 'flags|=0x0002'
+	    test -n "$val" && let 'flags|=0x0004'
+	    ;;
+	Required-Stop)
+	    let 'flags|=0x0008'
+	    test -n "$val" && let 'flags|=0x0010'
+	    ;;
+	Should-Start)
+	    let 'flags|=0x0020'
+	    test -n "$val" && let 'flags|=0x0040'
+	    ;;
+	Should-Stop)
+	    let 'flags|=0x0080'
+	    test -n "$val" && let 'flags|=0x0100'
+	    ;;
+	Default-Start)
+	    let 'flags|=0x0200'
+	    test -n "$val" && let 'flags|=0x0400'
+	    ;;
+	esac
+    done
+    if (((flags & 0x0001) == 0)) ; then
+	echo "E: File \`$s' does not provide anything, please use a non-empty \`Provide'!"
+	let ret++
+    fi
+    if (((flags & 0x0002) == 0)) ; then
+	echo "E: File \`$s' is missing \`Required-Start', please add even if empty!"
+	let ret++
+    fi
+    if (((flags & 0x0008) == 0)) ; then
+	if (((flags & 0x0006) == 0x0006)) ; then
+	    echo "W: File \`$s' is missing \`Required-Stop', please add and specify services!"
+	else
+	    echo "W: File \`$s' is missing \`Required-Stop', please add even if empty!"
+	fi
+    fi
+    if (((flags & 0x0006) == 0x0006 && (flags & 0x0018) == 0x0008)) ; then
+	if test "$nonfatalnull" = "yes" ; then
+	    echo "W: File \`$s' does require services for start but nothing for stop, if intended use \`\$null' please!"
+	else
+	    echo "E: File \`$s' does require services for start but nothing for stop, if intended use \`\$null'!"
+	    let ret++
+	fi
+    fi
+    if (((flags & 0x0020) == 0x0020 && (flags & 0x0080) == 0)) ; then
+	if (((flags & 0x0060) == 0x0060)) ; then
+	    echo "W: File \`$s' has \`Should-Start' but no \`Should-Stop', please add and specify services!"
+	else
+	    echo "W: File \`$s' has \`Should-Start' but no \`Should-Stop', please add!"
+	fi
+    fi
+    if (((flags & 0x0060) == 0x0060 && (flags & 0x0180) == 0x0080)) ; then
+	if test "$nonfatalnull" = "yes" ; then
+	    echo "W: File \`$s' may require services for start but nothing for stop, if intended use \`\$null' please!"
+	else
+	    echo "E: File \`$s' may require services for start but nothing for stop, if intended use \`\$null'!"
+	    let ret++
+	fi
+    fi
+    if (((flags & 0x0200) == 0)) ; then
+	echo "E: File \`$s' is missing \`Default-Start', please add and specify default runlevel(s)!"
+	let ret++
+    fi
+    if (((flags & 0x0400) == 0)) ; then
+	echo "E: File \`$s' has empty \`Default-Start', please specify default runlevel(s)!"
+	let ret++
+    fi
+}
+
+for s in $scripts ; do
+    p=${INTIDIR}/$s
+    head=$(sed -rn '/^###[[:blank:]]BEGIN INIT INFO/,/^### END INIT INFO/{s/[[:blank:]]+/ /g; p;}' < $p)
+    if test -z "$head" -a -s "${RPM_BUILD_ROOT}/usr/share/insserv/overrides/$s" ; then
+	head=$(sed -rn '/^###[[:blank:]]BEGIN INIT INFO/,/^### END INIT INFO/{s/[[:blank:]]+/ /g; p;}' < $p)
+    fi
+    if test -z "$head" ; then
+	echo "E: File \`$s' without LSB header found in ${INTIDIR}"
+	let ret++
+	continue
+    fi
+    checkhead
+done
+unset head p s
+
+if ((ret != 0)) ; then
+    echo "ERROR: found one or more broken init or boot scripts, please fix them."
+    echo "       For more information about LSB headers please read the manual"
+    echo "       page of of insserv by executing the command \`man 8 insserv'."
+    echo "       If you don't understand this, mailto=werner@suse.de"
+fi
+exit $ret
