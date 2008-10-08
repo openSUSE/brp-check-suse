@@ -2,43 +2,35 @@
 # If using normal root, avoid changing anything.
 if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
 	echo "RPM_BUILD_ROOT is not set or set to / : skipping strip"
-        exit 0
+	exit 0
 fi
 if [ "$NO_BRP_STRIP_DEBUG" = "true" ] ; then
 	echo "NO_BRP_STRIP_DEBUG is set: skipping strip"
 	exit 0
 fi
 
-# Strip ELF binaries
-for f in `find $RPM_BUILD_ROOT -type f -perm +0111 -exec file {} \; | \
-	grep -v '/usr/lib/debug/' | \
-	grep -v '/lib/modules/' | \
-	grep -v '/opt/cross/' | \
-	grep -v '^/proc/' | \
-	sed -n -e 's/^\(.*\):[ 	]*ELF.*, not stripped/\1/p'`; do
-        chmod u+w $f || :
-	strip -p --strip-debug $f || :
+FIND_IGNORE="( -path */usr/lib/debug -o -path */lib/modules -o -path */opt/cross -o -path */proc ) -prune -o"
+
+# Strip debuginfo from ELF binaries, but not static libraries or kernel modules
+for f in $(find $RPM_BUILD_ROOT $FIND_IGNORE \( -name "*.a" -o -name "*.ko" \) \
+    -prune -o -type f \( -perm /0111 -o -name "*.so*" \) -exec file {} \; | \
+    sed -n -e 's/^\(.*\):[ ]*ELF.*, not stripped/\1/p'); do
+	mode=$(stat -c %a $f)
+	chmod u+w $f || :
+	strip -p --strip-debug --discard-locals -R .comment -R .note $f || :
+	chmod $mode $f
 done
 
-# Strip static libs part1
-for f in `find $RPM_BUILD_ROOT -type f -name "*.a" -exec file {} \; | \
-       grep -v '/usr/lib/debug/' | \
-       grep -v '/lib/modules/' | \
-       grep -v '/opt/cross/' | \
-       grep -v '^/proc/' | \
-       sed -n -e 's/^\(.*\):[  ]*ELF.*, not stripped/\1/p'`; do
-       chmod u+w $f || :
-       strip -p --strip-debug $f || :
+# Don't strip debuginfo from static libs, but compiler-generated local symbols
+for f in $(find $RPM_BUILD_ROOT $FIND_IGNORE -type f -name "*.a" -print) ; do
+	case $(file $f) in
+	    *"current ar"*|*ELF*", not stripped"*)
+		chmod u+w $f || :
+		strip -p --discard-locals -R .comment -R .note $f || :
+		;;
+	    *)
+		echo "WARNING: Strange looking archive $(file $f)"
+		continue
+		;;
+	esac
 done
-
-# Strip static libs part2
-for f in `find $RPM_BUILD_ROOT -type f -name "*.a" -exec file {} \; | \
-       grep -v '/usr/lib/debug/' | \
-       grep -v '/lib/modules/' | \
-       grep -v '/opt/cross/' | \
-       grep -v '^/proc/' | \
-       sed -n -e 's/^\(.*\):[  ]*current ar archive/\1/p'`; do
-       chmod u+w $f || :
-       strip -p --strip-debug $f || :
-done
-
