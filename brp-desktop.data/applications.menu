@@ -162,21 +162,36 @@
 			<Include>
 				<And>
 				<Category>Education</Category>
+				<Or>
 				<Category>Science</Category>
+				<Category>ComputerScience</Category>
 				<Category>Biology</Category>
+				<Category>Economy</Category>
+				<Category>Geography</Category>
 				<Category>Geology</Category>
+				<Category>Geoscience</Category>
+				<Category>History</Category>
+				<Category>ImageProcessing</Category>
+				<Category>Literature</Category>
 				<Category>MedicalSoftware</Category>
 				<Category>Physics</Category>
+				<Category>Robotics</Category>
+				<Category>Sports</Category>
 				<Category>Electronics</Category>
+				</Or>
 				<Not>
 				<Category>X-SuSE-Core-Edutainment</Category>
 				<Category>Astronomy</Category>
 				<Category>Chemistry</Category>
 				<Category>Construction</Category>
+				<Category>DataVisualization</Category>
 				<Category>Engineering</Category>
+				<Category>Electricity</Category>
 				<Category>Art</Category>
 				<Category>Math</Category>
+				<Category>NumericalAnalysis</Category>
 				<Category>Music</Category>
+				<Category>ParallelComputing</Category>
 				<Category>Languages</Category>
 				<Category>Teaching</Category>
 				<Category>X-KDE-Edu-Teaching</Category>
@@ -197,7 +212,10 @@
 			<Name>Mathematics</Name>
 			<Directory>suse-edutainment-mathematics.directory</Directory>
 			<Include>
+				<Category>DataVisualization</Category>
 				<Category>Math</Category>
+				<Category>NumericalAnalysis</Category>
+				<Category>ParallelComputing</Category>
 			</Include>
 		</Menu>
 		<Menu>
@@ -244,6 +262,7 @@
 			<Name>Construction</Name>
 			<Directory>suse-edutainment-construction.directory</Directory>
 			<Include>
+				<Category>Electricity</Category>
 				<Category>Engineering</Category>
 				<Category>Construction</Category>
 			</Include>
