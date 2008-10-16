@@ -1,0 +1,53 @@
+#!/bin/sh
+# author:	Thomas Biege <thomas@suse.de>
+# last update:	2008-09-22
+#
+# purpose: detect packages that want to install an unknown dbus
+#          autostart service
+# note: edit macros.brp to include this script
+# see: http://techbase.kde.org/Development/Tutorials/D-Bus/Autostart_Services
+
+if [ -f /usr/lib/rpm/brp-dbus-autostart.data/whitelist ]
+then
+	WHITELIST=$(cat /usr/lib/rpm/brp-dbus-autostart.data/whitelist)
+else
+	echo "Warning: dbus autostart system-services whitelist file is missing."
+	exit 0
+fi
+
+# if using normal root, avoid changing anything.
+if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
+	exit 0
+fi
+
+E=$(ls -1  $RPM_BUILD_ROOT/usr/share/dbus-*/system-services/*.service $RPM_BUILD_ROOT/etc/dbus-*/system.d/*.conf 2>/dev/null)
+if ! [ -z "$E" ]
+then
+	if [ -z "$WHITELIST" ] # we do not have a whitelist
+	then
+		echo "Warning: This package installs an unknown D-BUS autostart system-service. Please contact security-team@suse.de"
+		exit 1 # do stop build process
+	fi
+
+	for i in $E
+	do
+		DF=$(basename $i)
+
+		FOUND=0
+		for j in $WHITELIST
+		do
+			if [ "$DF" == "$j" ]
+			then
+				FOUND=1
+			fi
+		done
+		if [ $FOUND -eq 0 ]
+		then
+			echo "Warning: This package installs an unknown D-BUS autostart system-service. Please contact security-team@suse.de: $DF"
+			exit 1 # do stop build process
+		fi
+      done
+fi
+
+exit 0
+
