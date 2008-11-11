@@ -36,6 +36,7 @@ org.gnome.ClockApplet.Mechanism.conf
 org.gnome.ClockApplet.Mechanism.service
 org.gnome.GConf.Defaults.conf
 org.gnome.GConf.Defaults.service
+org.opensuse.BackupManager.service
 org.opensuse.CupsPkHelper.Mechanism.conf
 org.opensuse.CupsPkHelper.Mechanism.service
 org.opensuse.yast.SCR.conf
