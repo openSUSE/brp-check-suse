@@ -1,6 +1,7 @@
 avahi-dbus.conf
 backup-manager.conf
 bluetooth.conf
+cnetworkmanager.conf
 com.google.code.BackupManager.service
 com.novell.Pkcs11Monitor.conf
 ConsoleKit.conf

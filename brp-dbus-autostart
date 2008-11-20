@@ -11,7 +11,7 @@ if [ -f /usr/lib/rpm/brp-dbus-autostart.data/whitelist ]
 then
 	WHITELIST=$(cat /usr/lib/rpm/brp-dbus-autostart.data/whitelist)
 else
-	echo "Warning: dbus autostart system-services whitelist file is missing."
+	echo "Warning: dbus autostart/system services whitelist file is missing."
 	exit 0
 fi
 
@@ -25,7 +25,7 @@ if ! [ -z "$E" ]
 then
 	if [ -z "$WHITELIST" ] # we do not have a whitelist
 	then
-		echo "Warning: This package installs an unknown D-BUS autostart system-service. Please contact security-team@suse.de"
+		echo "Warning: This package installs an unknown D-BUS autostart/system service. Please contact security-team@suse.de"
 		exit 1 # do stop build process
 	fi
 
@@ -43,7 +43,7 @@ then
 		done
 		if [ $FOUND -eq 0 ]
 		then
-			echo "Warning: This package installs an unknown D-BUS autostart system-service. Please contact security-team@suse.de: $DF"
+			echo "Warning: This package installs an unknown D-BUS autostart/system service. Please contact security-team@suse.de: $DF"
 			exit 1 # do stop build process
 		fi
       done
