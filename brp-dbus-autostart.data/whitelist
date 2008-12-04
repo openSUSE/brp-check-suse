@@ -13,6 +13,7 @@ hal.conf
 kerneloops.dbus
 knetworkmanager.conf
 NetworkManager.conf
+NetworkManagerInfo.conf
 newprinternotification.conf
 nm-applet.conf
 nm-avahi-autoipd.conf
