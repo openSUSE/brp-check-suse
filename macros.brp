@@ -13,6 +13,5 @@
     /usr/lib/rpm/brp-check-bytecode-version \
     /usr/lib/rpm/brp-boot-scripts \
     /usr/lib/rpm/brp-hook \
-    /usr/lib/rpm/brp-dbus-autostart \
 %{nil}
 
