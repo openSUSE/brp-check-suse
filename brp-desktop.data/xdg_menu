@@ -1542,10 +1542,6 @@ sub output_validate ($;$)
 				$output .= "ERROR: No sufficient Category definition: $desktop->{file} \n";
 				$validate_error = 1;
 			}
-			if ( $desktop->{'X-SuSE-translate'} ne 'true' and $desktop->{'X-SuSE-translate'} ne 'false' ) {
-				$output .= "ERROR: translation is neither enabled nor disabled for this file: $desktop->{file} \n";
-				$validate_error = 1;
-			}
 
 			if ($desktop->{Icon}  eq '') {
 				$output .= "WARNING: Empty Icon in $desktop->{file}\n";
