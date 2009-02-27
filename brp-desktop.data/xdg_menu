@@ -1565,7 +1565,7 @@ sub output_validate ($;$)
 					if ($desktop->{'OnlyShowIn'} eq "GNOME") {
 					    $xtrapath .= ",icons/gnome";
 					}
-					my @out = `find  {,\$RPM_BUILD_ROOT}{/usr,/opt/kde3,/opt/gnome}/share/{pixmaps,icons/hicolor$xtrapath}{,{16x16,22x22,24x24,32x32,36x36,48x48,64x64,72x72,96x96,128x128,192x192,scalable}/{apps,stock}} -name $desktop->{Icon} -o -name $desktop->{Icon}.png -o -name $desktop->{Icon}.jpg -o -name $desktop->{Icon}.xpm -o -name $desktop->{Icon}.svg -o -name $desktop->{Icon}.svgz 2> /dev/null`;
+					my @out = `find  {,\$RPM_BUILD_ROOT}{/usr,/opt/kde3,/opt/gnome}/share/{pixmaps,icons/hicolor$xtrapath}{,{16x16,22x22,24x24,32x32,36x36,48x48,64x64,72x72,96x96,128x128,192x192,scalable}/{actions,animations,apps,categories,devices,emblems,emotes,filesystems,intl,mimetypes,places,status,stock}} -name $desktop->{Icon} -o -name $desktop->{Icon}.png -o -name $desktop->{Icon}.jpg -o -name $desktop->{Icon}.xpm -o -name $desktop->{Icon}.svg -o -name $desktop->{Icon}.svgz 2> /dev/null`;
 					if ( !@out and $desktop->{'X-SuSE-YaST-Call'} eq '' ){
 						$output .= "ERROR: Icon file not installed: $desktop->{file}\n";
 						$validate_error = 1;
