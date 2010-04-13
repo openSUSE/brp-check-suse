@@ -10,12 +10,13 @@ use constant FATALS         => 0; # root object
 use constant NSMAP          => 1;
 use constant UNKNOWN_PREF   => 2;
 use constant AUTO_PREFIX    => 3;
+use constant XMLNS_11       => 4;
 use constant DEFAULT        => 0; # maps
 use constant PREFIX_MAP     => 1;
 use constant DECLARATIONS   => 2;
 
 use vars qw($VERSION $NS_XMLNS $NS_XML);
-$VERSION    = '1.08';
+$VERSION    = '1.11';
 $NS_XMLNS   = 'http://www.w3.org/2000/xmlns/';
 $NS_XML     = 'http://www.w3.org/XML/1998/namespace';
 
@@ -38,10 +39,12 @@ sub new {
                 ]],
                 'aaa', # UNKNOWN_PREF
                 0,     # AUTO_PREFIX
+                1,     # XML_11
                ];
     $self->[NSMAP]->[0]->[PREFIX_MAP]->{xmlns} = $NS_XMLNS if $options->{xmlns};
     $self->[FATALS] = $options->{fatal_errors} if defined $options->{fatal_errors};
     $self->[AUTO_PREFIX] = $options->{auto_prefix} if defined $options->{auto_prefix};
+    $self->[XMLNS_11] = $options->{xmlns_11} if defined $options->{xmlns_11};
     return bless $self, $class;
 }
 #-------------------------------------------------------------------#
@@ -93,6 +96,7 @@ sub declare_prefix {
     to a true value.
     EOWARN
 
+    no warnings 'uninitialized';
     if ($prefix eq 'xml' and $value ne $NS_XML) {
         die "The xml prefix can only be bound to the $NS_XML namespace."
     }
@@ -103,12 +107,13 @@ sub declare_prefix {
         return 1;
     }
     return 0 if index(lc($prefix), 'xml') == 0;
+    use warnings 'uninitialized';
 
     if (defined $prefix and $prefix eq '') {
         $self->[NSMAP]->[-1]->[DEFAULT] = $value;
     }
     else {
-        die "Cannot undeclare prefix $prefix" if $value eq '';
+        die "Cannot undeclare prefix $prefix" if $value eq '' and not $self->[XMLNS_11];
         if (not defined $prefix and $self->[AUTO_PREFIX]) {
             while (1) {
                 $prefix = $self->[UNKNOWN_PREF]++;
@@ -417,6 +422,10 @@ random prefix mapped to that namespace. Otherwise an undef prefix will
 trigger a warning (you should probably know what you're doing if you
 turn this option on).
 
+If C<xmlns_11> us turned off, it becomes illegal to undeclare namespace
+prefixes. It is on by default. This behaviour is compliant with Namespaces
+in XML 1.1, turning it off reverts you to version 1.0.
+
 =item * $nsup->push_context
 
 Adds a new empty context to the stack. You can then populate it with
@@ -562,7 +571,7 @@ list.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2001-2002 Robin Berjon. All rights reserved. This program is
+Copyright (c) 2001-2005 Robin Berjon. All rights reserved. This program is
 free software; you can redistribute it and/or modify it under the same terms
 as Perl itself.
 
