@@ -1980,7 +1980,7 @@ elsif ($format eq 'validate') {
 	$output = output_validate($menu);
 	print $output;
 	if ( $validate_error eq 1 ) {
-		print "Errors in installed desktop file detected. Please mail stbinner\@suse.de, if you think this is wrong.\n";
+		print "Errors in installed desktop file detected. Please refer to http://en.opensuse.org/SUSE_Package_Conventions/RPM_Macros\n";
 		exit 1;
 	}
 	exit 0;
