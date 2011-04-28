@@ -6,6 +6,9 @@ fi
 
 MASTER_ERROR_CODE=0
 for f in `find $RPM_BUILD_ROOT -type f -name "*.la" ` ; do
+   # first try to see if this really looks like a libtool file
+   grep -q "libdir=" $f || continue
+   grep -q "library_names=" $f || continue
    ERROR_CODE=0
    grep -q  "libdir=.*$RPM_BUILD_ROOT" $f && ERROR_CODE=1
    grep -q "libdir=.*/usr/src/packages/BUILD/" $f && ERROR_CODE=2
