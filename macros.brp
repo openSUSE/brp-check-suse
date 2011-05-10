@@ -6,7 +6,6 @@
     /usr/lib/rpm/brp-symlink \
     /usr/lib/rpm/brp-desktop \
     /usr/lib/rpm/brp-rpath \
-    /usr/lib/rpm/brp-pie \
     /usr/lib/rpm/brp-rootfs \
     /usr/lib/rpm/brp-tcl \
     /usr/lib/rpm/brp-check-python \
