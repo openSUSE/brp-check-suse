@@ -15,9 +15,9 @@ for f in `find $RPM_BUILD_ROOT/bin $RPM_BUILD_ROOT/sbin \
 	    ;;
     esac
 	
-    ldd $f | grep -qE '/(usr|opt)' && {
-	echo "binary ${f##$RPM_BUILD_ROOT} is linked against libraries in /usr or /opt"
-	ldd $f | grep -E '/(usr|opt)'
+    ldd $f | grep -qE '/opt' && {
+	echo "binary ${f##$RPM_BUILD_ROOT} is linked against libraries in /opt"
+	ldd $f | grep -E '/opt'
 	OUT_OF_FS=1
     }
 done
@@ -29,9 +29,9 @@ for f in `find $RPM_BUILD_ROOT/lib $RPM_BUILD_ROOT/lib64 \
 	  grep -v "/evms/" |
 	  grep -v "/libnss_" |
 	  sed -n -e 's/^\(.*\):[[:space:]]*ELF.*/\1/p'` ; do
-    ldd $f 2>/dev/null | grep -qE '/(usr|opt)' && {
-	echo "library ${f##$RPM_BUILD_ROOT} is linked against libraries in /usr or /opt"
-	ldd $f | grep -E '/(usr|opt)'
+    ldd $f 2>/dev/null | grep -q '/opt' && {
+	echo "library ${f##$RPM_BUILD_ROOT} is linked against libraries in /opt"
+	ldd $f | grep -E '/opt'
 	OUT_OF_FS=1
     }
 done
