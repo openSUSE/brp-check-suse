@@ -24,6 +24,10 @@ for FILE in $(find $RPM_BUILD_ROOT -type f \( -perm -0100 -o -perm -0010 -o -per
 	while [ -n "$RPATH_VAL" ]; do
 	    RPATH_VAL_NXT=${RPATH_VAL%%:*}
 	    RPATH_VAL=${RPATH_VAL##$RPATH_VAL_NXT:}
+	    test -z "$RPATH_VAL_NXT" && {
+		echo "WARNING: ignoring empty rpath \"\" in $FILE"
+		continue
+	    }
 	    test -d "$RPATH_VAL_NXT" && RPATH_VAL_NXT=$(cd ${RPATH_VAL_NXT//#\/\//\/}; pwd -P)
 
 	    case ":$RPATH_VAL_NXT" in
