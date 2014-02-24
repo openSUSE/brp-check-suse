@@ -79,6 +79,11 @@ do
 	fi
     done
 
+    if test "$link" = "$link_dest"; then
+      echo "ERROR: $link points to itself (as $orig_link_dest)"
+      exit 1
+    fi
+
     # black list
     case "$link,$link_dest" in
 	*,/var/lib/named*)
