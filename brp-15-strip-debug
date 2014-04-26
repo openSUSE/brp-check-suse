@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # If using normal root, avoid changing anything.
 if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
 	echo "RPM_BUILD_ROOT is not set or set to / : skipping strip"
@@ -9,30 +9,39 @@ if [ "$NO_BRP_STRIP_DEBUG" = "true" ] ; then
 	exit 0
 fi
 
-FIND_IGNORE='\( -path $RPM_BUILD_ROOT/usr/lib/debug -o -path $RPM_BUILD_ROOT/lib/modules -o -path $RPM_BUILD_ROOT/opt/cross -o -path $RPM_BUILD_ROOT/proc \) -prune -o'
+FIND_IGNORE=(
+    '('
+    -path "$RPM_BUILD_ROOT/usr/lib/debug" -o -path
+    "$RPM_BUILD_ROOT/lib/modules" -o -path "$RPM_BUILD_ROOT/opt/cross" -o
+    -path "$RPM_BUILD_ROOT/proc"
+    ')'
+    -prune -o
+)
 
 # Strip debuginfo from ELF binaries, but not static libraries or kernel modules
-for f in $(find $RPM_BUILD_ROOT $(echo "$(eval "echo $FIND_IGNORE")") \
-    \( -name "*.a" -o -name "*.ko" \) -prune -o \
-    -type f \( -perm /0111 -o -name "*.so*" \) -exec file {} \; | \
-    sed -n -e 's/^\(.*\):[ ]*ELF.*, not stripped/\1/p'); do
-	mode=$(stat -c %a $f)
-	chmod u+w $f || :
-	strip -p --strip-debug --discard-locals -R .comment -R .note $f || :
-	chmod $mode $f
-done
+while read f; do
+	mode="$(stat -c %a "$f")"
+	chmod u+w "$f" || :
+	strip -p --strip-debug --discard-locals -R .comment -R .note "$f" || :
+	chmod "$mode" "$f"
+done < <(
+    find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" \( -name "*.a" -o -name "*.ko" \) \
+	-prune -o \
+	-type f \( -perm /0111 -o -name "*.so*" \) \
+	-exec file {} + | \
+    sed -n -e 's/^\(.*\):[ ]*ELF.*, not stripped/\1/p'
+)
 
 # Don't strip debuginfo from static libs, but compiler-generated local symbols
-for f in $(find $RPM_BUILD_ROOT $(echo "$(eval "echo $FIND_IGNORE")") \
-    -type f -name "*.a" -print) ; do
-	case $(file $f) in
+while read f; do
+	case $(file "$f") in
 	    *"current ar"*|*ELF*", not stripped"*)
-		chmod u+w $f || :
-		strip -p --discard-locals -R .comment -R .note $f || :
+		chmod u+w "$f" || :
+		strip -p --discard-locals -R .comment -R .note "$f" || :
 		;;
 	    *)
 		echo "WARNING: Strange looking archive $(file $f)"
 		continue
 		;;
 	esac
-done
+done < <(find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" -type f -name "*.a" -print)
