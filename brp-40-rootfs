@@ -1,46 +1,28 @@
-#!/bin/sh
+#!/bin/bash
+
+# purpose of this test is to check that no generated binary is linked against anything in /opt
+#
 
 # If using normal root, avoid check. Will give too much false positive
+
 if [ -z "$RPM_BUILD_ROOT" ]; then
         exit 0
 fi
 
 OUT_OF_FS=0
-for f in `find $RPM_BUILD_ROOT/bin $RPM_BUILD_ROOT/sbin \
-	  -type f -exec file {} \; 2>/dev/null | \
-	  sed -n -e 's/^\(.*\):[[:space:]]*ELF.*/\1/p'` ; do
-    case ${f##$RPM_BUILD_ROOT} in
-	/bin/rpm|/sbin/install-info)
-	    continue
-	    ;;
-    esac
-	
-    ldd $f | grep -qE '/opt' && {
-	echo "binary ${f##$RPM_BUILD_ROOT} is linked against libraries in /opt"
-	ldd $f | grep -E '/opt'
-	OUT_OF_FS=1
-    }
-done
 
-for f in `find $RPM_BUILD_ROOT/lib $RPM_BUILD_ROOT/lib64 \
-	  -type f -exec file {} \; 2>/dev/null | \
-	  grep "shared object" | \
-	  grep -v "/security/" |
-	  grep -v "/evms/" |
-	  grep -v "/libnss_" |
-	  sed -n -e 's/^\(.*\):[[:space:]]*ELF.*/\1/p'` ; do
-    ldd $f 2>/dev/null | grep -q '/opt' && {
-	echo "library ${f##$RPM_BUILD_ROOT} is linked against libraries in /opt"
-	ldd $f | grep -E '/opt'
-	OUT_OF_FS=1
-    }
-done
-
-if [ $OUT_OF_FS -eq 1 ]; then
-  echo ""
-  echo "Please adjust the paths in your package"
-  echo
-  exit 1
+if {
+	find "$RPM_BUILD_ROOT"/{bin,sbin} -type f -exec file {} + 2>/dev/null | tee /tmp/find | \
+	sed -n -e 's/^\(.*\):[[:space:]]*ELF.*/\1/p;/\/bin\/rpm/d;/\/sbin\/install-info/d' \
+	    -e '/shared object/{/\/\(security\|evms\|libnss_\)\//d;s/^\(.*\):[[:space:]]*ELF.*/\1/p}' | \
+	xargs -r  ldd | sed -nf /usr/lib/rpm/brp-rootfs.data/ldd.sed | \
+	sed -n "/\/opt/s@^\([^:]\+\):.*\(/opt/[^[:blank:]]\+\).*@binary \1 is linked against libraries in /opt (\2)@" | \
+	grep 'is linked against libraries in /opt'
+    } ; then
+    echo ""
+    echo "Please adjust the paths in your package"
+    echo
+    exit 1
 fi
 
 exit 0
