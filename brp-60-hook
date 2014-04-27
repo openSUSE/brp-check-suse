@@ -4,8 +4,8 @@ if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
         exit 0
 fi
 
-if [ -e $RPM_SOURCE_DIR/brp-hook ] ; then
-    sh $RPM_SOURCE_DIR/brp-hook || exit 1
+if [ -e "$RPM_SOURCE_DIR/brp-hook" ] ; then
+    sh "$RPM_SOURCE_DIR/brp-hook" || exit 1
 fi
 
 exit 0
