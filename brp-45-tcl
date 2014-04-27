@@ -12,8 +12,8 @@ fi
 # Check for files named tclIndex and pkgIndex.tcl 
 # under /usr/lib and /usr/lib64.
 
-DIRS="$RPM_BUILD_ROOT/usr/lib $RPM_BUILD_ROOT/usr/lib64"
-FILES=$(find $DIRS -maxdepth 2 -name pkgIndex.tcl 2>/dev/null)
+DIRS=( "$RPM_BUILD_ROOT/usr/lib" "$RPM_BUILD_ROOT/usr/lib64" )
+FILES=$(find "${DIRS[@]}" -maxdepth 2 -name pkgIndex.tcl 2>/dev/null)
 if test -n "$FILES"; then
     echo "Script libraries for Tcl extensions should be in"
     echo "a package-specific subdir of /usr/share/tcl but"
