@@ -9,21 +9,19 @@ if [ ! -e /usr/include/python/Python.h ]; then
 	exit 0
 fi
 
-TMPDIR=`mktemp -d /tmp/ssizecheck-XXXXXX`
+TMPDIR="$(mktemp -d /tmp/ssizecheck-XXXXXX)"
 
 find /usr/src/packages/BUILD/ -iname '**.c' -print0 | \
-xargs -r0 python /usr/lib/rpm/brp-check-python.data/ssizecheck.py > $TMPDIR/$$
+xargs -r0 python /usr/lib/rpm/brp-check-python.data/ssizecheck.py > "$TMPDIR/$$"
 
 test -f /.buildenv && . /.buildenv
 
-cat $TMPDIR/$$
+cat "$TMPDIR/$$"
 
 if [ "${BUILD_BASENAME:0:4}" = "beta" ]; then
-   #echo "this is now an error in BETA (and will very soon be in STABLE)"
-   test -s $TMPDIR/$$ && echo "please see http://www.python.org/dev/peps/pep-0353/ for hints"
-   #test -s $TMPDIR/$$ && exit 1
+   test -s "$TMPDIR/$$" && echo "please see http://www.python.org/dev/peps/pep-0353/ for hints"
 fi
 
-rm -rf $TMPDIR
+rm -rf "$TMPDIR"
 
 exit 0
