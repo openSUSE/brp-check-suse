@@ -50,6 +50,7 @@ for p in ${INTIDIR}* ; do
     *.local)
 	case "${s%.*}" in
 	halt|boot|after|before)
+	    test "$RPM_PACKAGE_NAME" = "aaa_base" && continue
 	    echo "E: Reserved file \`$s' found in ${INTIDIR}!"
 	    ;;
 	*)
@@ -75,7 +76,7 @@ for p in ${INTIDIR}* ; do
     scripts="${scripts:+${scripts} }$s"
 done
 
-test -n "$scripts" || exit 0
+test -n "$scripts" -o "$ret" -gt 0 || exit 0
 
 #
 # Uses global variables $head for the LSB header
