@@ -1,7 +1,6 @@
 #!/bin/bash
 # script checks wether package is 64-bit clean
 # and also for a linker bug. (linker allows 64bit libs to link 32bit libs)
-echo "sf@suse.de: if you find problems with this script, drop me a note"
 # If using normal root, avoid changing anything:
 if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
        exit 0
