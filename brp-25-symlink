@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Task: go through the files in $RPM_BUILD_ROOT and
 # relink symbolic links so that:
@@ -14,32 +14,77 @@
 #   dangling symlinks or symlinks to init scripts in wrong location
 
 # Author: Stephan Kulow <coolo@suse.de>
+#
+# major speedup: Tomas Cech <sleep_walker@suse.cz> and Michal Kubecek <mkubecek@suse.cz>
 
 # If using normal root, avoid changing anything.
 if [ -z "$RPM_BUILD_ROOT" ]; then
 	exit 0
 fi
 
+strip_slashes() {
+    local loc="${!1}"
+    local tmp="${loc//\/\///}"
+    while [ "$loc" != "$tmp" ]; do
+	loc="$tmp"
+	tmp="${loc//\/\///}"
+    done
+    eval "$1"="'$loc'"
+}
+
+eat_component() {
+    loc="${!1}"
+    local rslt="${loc#/*/}"
+    if [ "$rslt" != "$loc" ]; then
+        rslt="/$rslt"
+    else
+        rslt="${loc##/*}"
+    fi
+    eval "$1"="'$rslt'"
+}
+
+top_dir () {
+    local rslt
+    if [ "${1:0:1}" = / ]; then
+        rslt="${1:1}"
+        rslt="/${rslt%%/*}"
+    else
+        rslt="$1"
+    fi
+    eval "$2"="'$rslt'"
+}
+
 LC_ALL=
 LANG=
 LC_TIME=POSIX
 
-BASENAME=/usr/bin/basename
-DIRNAME=/usr/bin/dirname
-READLINK=/usr/bin/readlink
+basename_int() {
+    echo "${1##*/}"
+}
+
+dirname_int() {
+    local rslt="${1%/*}"
+    if [ -n "$rslt" ]; then
+        echo "$rslt"
+    elif [ "${1:0:1}" = / ]; then
+        echo /
+    else
+        echo .
+    fi
+}
 
 cd $RPM_BUILD_ROOT
 
 had_errors=0
 
-links=`find . -type l | sed -e "s,^./,/,"`
-for link in $links
+while IFS="|" read link link_dir link_dest
 do
-    link_dest=`$READLINK ./$link`
-    orig_link_dest=$link_dest
+    link="${link#.}"
+    link_dir="${link_dir#.}"
+    orig_link_dest="$link_dest"
 
     new_link_dest=NONE
-    link_dir=`$DIRNAME $link`
+    link_dir="$(dirname_int $link)"
 
     case $link_dest in
 	.|..|../..) # link to current dir
@@ -57,15 +102,17 @@ do
     esac
 
     # cleaning out double slash
-    link_dest=`echo $link_dest | sed -e 's,//*,/,g; s,/\.$,/,; s,/$,,'`
+    strip_slashes link_dest
+    link_dest="${link_dest%.}"
+    link_dest="${link_dest%/}"
 
     # eliminating /./ components
-    link_dest=`echo $link_dest | sed -e "s,/\./,/,g"`;
+    link_dest="${link_dest//\/.\//\/}"
 
     counter=0
     # eliminating back references
-    while echo $link_dest | egrep -q '/\.\.'; do
-       link_dest=`echo $link_dest | sed -e "s,/[^/]*/\.\.,,"`;
+    while [[ $link_dest =~ /\.\. ]]; do
+       link_dest="$(sed "s@/[^/]\+/\.\.@@" <<< "$link_dest")"
        case $link_dest in
 	/..*) # this is very mean
 	    echo "ERROR: $link points to illegal $link_dest"
@@ -94,8 +141,6 @@ do
 	     continue;;
 	/sbin/init,*) # don't create absolute symlink for /sbin/init
 	     continue;;
-        *,/etc/alternatives/*) # white list alternatives
-             ;;
 	*share/automake-*)
 	     echo "ERROR: link target $link points into automake directory"
 	     echo " You might want to add a -c to the automake call (or just"
@@ -120,73 +165,75 @@ do
 
     forced_absolute=0
     for prefix in /usr/X11R6/lib/X11 /usr/X11R6/include/X11 /usr/X11R6/lib/X11/app-defaults ; do
-      if echo $link | grep -q "^$prefix/"; then
-	 if echo $link_dest | grep -q "^$prefix/"; then
-	    # if it's below it, it's fine
-	    :
-         else
+      if [[ $link =~ ^$prefix/ ]]; then
+	 if ! [[ $link_dest =~ ^$prefix/ ]]; then
+	    # not ok
 	    forced_absolute=1
          fi
       fi
     done
 
-    dest_dir=`$DIRNAME $link_dest`
+    dest_dir="$(dirname_int $link_dest)"
 
     # figuring out (currently) correct destination
-    if test "$link_dir" = "$dest_dir" || test "$dest_dir" = "."; then
-	new_link_dest=`$BASENAME $link_dest`
+    if [ "$link_dir" = "$dest_dir" -o  "$dest_dir" = "." ]; then
+	new_link_dest="$(basename_int $link_dest)"
     else
 	# figuring out top level directory
-	top_link=`echo $link | sed -e 's,^\(/[^/]*\)/.*,\1,'`
-        top_dest=`echo $link_dest | sed -e 's,^\(/[^/]*\)/.*,\1,'`
-	if test "$forced_absolute" = 0 && test "$top_link" = "$top_dest"; then # supposed to be relative
+        top_dir "$link" top_link
+        top_dir "$link_dest" top_dest
+	if [ "$forced_absolute" = 0 -a "$top_link" = "$top_dest" ]; then # supposed to be relative
 
 	    # first we need to cut out the common prefix
 	    link_tmp=$link
-	    while test "$top_link" = "$top_dest"; do
+	    while [ "$top_link" = "$top_dest" ]; do
 		link_orig=$link_tmp
 		dest_orig=$link_dest
-		link_tmp=`echo $link_tmp | sed -e 's,^\(/[^/]*\)/,/,'`
-		link_dest=`echo $link_dest | sed -e 's,^\(/[^/]*\)/,/,'`
-		top_link=`echo $link_tmp | sed -e 's,^\(/[^/]*\)/.*,\1,'`
-		top_dest=`echo $link_dest | sed -e 's,^\(/[^/]*\)/.*,\1,'`
+		link_tmp="/${link_tmp#/*/}"
+		link_dest="/${link_dest#/*/}"
+		top_link="${link_tmp#/}"
+		top_link="/${top_link%%/*}"
+		top_dest="${link_dest#/}"
+		top_dest="/${top_dest%%/*}"
 
-		if test "$top_dest" = "$dest_orig" || test "$top_link" = "$link_orig"; then
-		    link_tmp=$link_orig
-		    link_dest=$dest_orig
+		if [ "$top_dest" = "$dest_orig" -o "$top_link" = "$link_orig" ]; then
+		    link_tmp="$link_orig"
+		    link_dest="$dest_orig"
 		    break
 		fi
 	    done
 
 	    # now we add a .. for every directory component
-	    link_tmp=`$DIRNAME $link_tmp`
+	    link_tmp="$(dirname_int $link_tmp)"
 
-	    if test "$link_tmp" = "$link_dest"; then
+	    if [ "$link_tmp" = "$link_dest" ]; then
 		new_link_dest=.
-	    elif test "$link_tmp" != "/"; then # we have a directory component
+	    elif [ "$link_tmp" != "/" ]; then # we have a directory component
 		link_rel=
 
-		while test -n "$link_tmp"; do
-		    link_tmp=`echo $link_tmp | sed -e 's,^\(/[^/]*\),,'`
+		while [ -n "$link_tmp" ]; do
+                    eat_component link_tmp
 		    link_rel="../$link_rel"
 		done
 
-		new_link_dest=`echo $link_rel/$link_dest | sed -e "s,//*,/,g"`
+		new_link_dest="$link_rel/$link_dest"
+		strip_slashes new_link_dest
+
 	    else
 		# get rid of the slash
-		link_dest=`echo $link_dest | sed -e 's,^/,,'`
-		new_link_dest=$link_dest
+		link_dest="${link_dest#/}"
+		new_link_dest="$link_dest"
 	    fi
 	else
-	    new_link_dest=$link_dest
+	    new_link_dest="$link_dest"
 	fi
     fi
 
-    if test "$new_link_dest" != NONE && test "$new_link_dest" != "$orig_link_dest"; then
+    if [ "$new_link_dest" != NONE -a "$new_link_dest" != "$orig_link_dest" ]; then
 	echo "INFO: relinking $link -> $new_link_dest (was $orig_link_dest)"
 	rm ./$link && ln -s $new_link_dest ./$link
     fi
-done
+done < <(find . -type l -printf '%p|%h|%l\n')
 
 if test "$had_errors" = 1; then
     exit 1
