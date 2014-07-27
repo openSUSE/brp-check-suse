@@ -141,6 +141,8 @@ do
 	     continue;;
 	/sbin/init,*) # don't create absolute symlink for /sbin/init
 	     continue;;
+        *,/etc/alternatives/*) # white list alternatives
+             ;;
 	*share/automake-*)
 	     echo "ERROR: link target $link points into automake directory"
 	     echo " You might want to add a -c to the automake call (or just"
