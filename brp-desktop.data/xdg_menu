@@ -11,6 +11,7 @@ use Getopt::Long;
 use Encode;
 use I18N::Langinfo qw(langinfo CODESET);
 use POSIX qw(locale_h);
+use File::Find;
 
 my $Version = "0.2";
 
@@ -1791,6 +1792,46 @@ sub output_icewm_menu ($;$)
 	return $output;
 }
 
+sub find_icon ($@)
+{
+	my $icon = shift;
+	my @icon_dirs = ();
+	my @themes = ('pixmaps','icons/hicolor','icons/Adwaita');
+	push @themes, @_;
+	my @sizes = ('16x16','22x22','24x24','32x32','36x36','48x48',
+		     '64x64','72x72','96x96','128x128','192x192','scalable');
+	my @types = ('actions','animations','apps','categories','devices',
+		     'emblems','emotes','filesystems','intl','mimetypes',
+		     'places','status','stock');
+
+	for my $d1 ('/usr','/opt/kde3', '/opt/gnome') {
+		for my $d2 (@themes) {
+			push @icon_dirs, "$d1/share/$d2";
+			for my $d3 (@sizes) {
+				push @icon_dirs, map { "$d1/share/$d2/$d3/$_" } @types;
+			}
+		}
+	}
+	my $found = 0;
+	find(sub { $found = 1 if
+		       $_ eq "$icon" ||
+		       $_ eq "$icon.png" ||
+		       $_ eq "$icon.jpg" ||
+		       $_ eq "$icon.xpm" ||
+		       $_ eq "$icon.svg" ||
+		       $_ eq "$icon.svgz"; },
+	     map { "$ENV{RPM_BUILD_ROOT}$_" } @icon_dirs);
+	find(sub { $found = 1 if
+		       $_ eq "$icon" ||
+		       $_ eq "$icon.png" ||
+		       $_ eq "$icon.jpg" ||
+		       $_ eq "$icon.xpm" ||
+		       $_ eq "$icon.svg" ||
+		       $_ eq "$icon.svgz"; }, @icon_dirs)
+	    unless $found;
+	return $found;
+}
+
 sub output_validate ($;$)
 {
 	my ($menu, $indent) = @_;
@@ -1824,16 +1865,12 @@ sub output_validate ($;$)
                                         # standard name, accept it without any action
 				 } else {
 					$output .= "WARNING: file extension in Icon line: $desktop->{file}\n" if substr($desktop->{Icon}, -4, 1) eq '.';
-					my $xtrapath = "";
-					if ($desktop->{'OnlyShowIn'} eq "KDE") {
-					    $xtrapath .= ",icons/crystalsvg";
-					}
-					if ($desktop->{'OnlyShowIn'} eq "GNOME") {
-					    $xtrapath .= ",icons/gnome";
-					}
-					my @out = `find  \$RPM_BUILD_ROOT{/usr,/opt/kde3,/opt/gnome}/share/{pixmaps,icons/hicolor,icons/Adwaita$xtrapath}{,{16x16,22x22,24x24,32x32,36x36,48x48,64x64,72x72,96x96,128x128,192x192,scalable}/{actions,animations,apps,categories,devices,emblems,emotes,filesystems,intl,mimetypes,places,status,stock}} -name $desktop->{Icon} -o -name $desktop->{Icon}.png -o -name $desktop->{Icon}.jpg -o -name $desktop->{Icon}.xpm -o -name $desktop->{Icon}.svg -o -name $desktop->{Icon}.svgz 2> /dev/null`;
-					@out = `find  {/usr,/opt/kde3,/opt/gnome}/share/{pixmaps,icons/hicolor,icons/Adwaita$xtrapath}{,{16x16,22x22,24x24,32x32,36x36,48x48,64x64,72x72,96x96,128x128,192x192,scalable}/{actions,animations,apps,categories,devices,emblems,emotes,filesystems,intl,mimetypes,places,status,stock}} -name $desktop->{Icon} -o -name $desktop->{Icon}.png -o -name $desktop->{Icon}.jpg -o -name $desktop->{Icon}.xpm -o -name $desktop->{Icon}.svg -o -name $desktop->{Icon}.svgz 2> /dev/null` unless @out;
-					if ( !@out and $desktop->{'X-SuSE-YaST-Call'} eq '' ){
+					my @xtrapath = ();
+					push @xtrapath, 'icons/crystalsvg'
+					    if $desktop->{'OnlyShowIn'} eq "KDE";
+					push @xtrapath, 'icons/gnome'
+					    if $desktop->{'OnlyShowIn'} eq "GNOME";
+					if (!find_icon($desktop->{Icon}, @xtrapath) and $desktop->{'X-SuSE-YaST-Call'} eq '') {
 						$output .= "ERROR: Icon file not installed: $desktop->{file} ($desktop->{Icon})\n";
 						$validate_error = 1;
 					}
