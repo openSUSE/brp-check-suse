@@ -8,6 +8,10 @@
 	<KDELegacyDirs/>
 	<DefaultAppDirs/>
 	<DefaultDirectoryDirs/>
+	<DefaultLayout inline="true" inline_limit="1">
+		<Merge type="menus"/>
+		<Merge type="files"/>
+	</DefaultLayout>
 
 	<Include>
 		<Category>X-SuSE-core</Category>
@@ -151,120 +155,271 @@
 		</Menu>
 	</Menu>
 	<Menu>
-		<Name>Edutainment</Name>
-		<Directory>suse-edutainment.directory</Directory>
+		<Name>Science</Name>
+		<Directory>suse-science.directory</Directory>
 		<Include>
-			<Category>X-SuSE-Core-Edutainment</Category>
+			<Category>X-SuSE-Core-Science</Category>
 		</Include>
 		<Menu>
-			<Name>Science</Name>
-			<Directory>suse-edutainment-science.directory</Directory>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>Education</Category>
-				<Or>
-				<Category>Science</Category>
-				<Category>ComputerScience</Category>
-				<Category>Biology</Category>
-				<Category>Economy</Category>
-				<Category>Geography</Category>
-				<Category>Geology</Category>
-				<Category>Geoscience</Category>
-				<Category>History</Category>
-				<Category>ImageProcessing</Category>
-				<Category>Literature</Category>
-				<Category>MedicalSoftware</Category>
-				<Category>Physics</Category>
-				<Category>Robotics</Category>
-				<Category>Sports</Category>
-				<Category>Electronics</Category>
-				</Or>
-				<Not>
-				<Category>X-SuSE-Core-Edutainment</Category>
-				<Category>Astronomy</Category>
-				<Category>Chemistry</Category>
-				<Category>Construction</Category>
-				<Category>DataVisualization</Category>
-				<Category>Engineering</Category>
-				<Category>Electricity</Category>
-				<Category>Art</Category>
-				<Category>Math</Category>
-				<Category>NumericalAnalysis</Category>
-				<Category>Music</Category>
-				<Category>ParallelComputing</Category>
-				<Category>Languages</Category>
-				<Category>Teaching</Category>
-				<Category>X-KDE-Edu-Teaching</Category>
-				<Category>X-KDE-Edu-Language</Category>
-				</Not>
+					<Category>Science</Category>
+					<Or>
+						<Category>Art</Category>
+						<Category>Artificial Intelligence</Category>
+						<Category>Biology</Category>
+						<Category>Construction</Category>
+						<Category>ComputerScience</Category>
+						<Category>Economy</Category>
+						<Category>Geology</Category>
+						<Category>Geoscience</Category>
+						<Category>History</Category>
+						<Category>Humanities</Category>
+						<Category>ImageProcessing</Category>
+						<Category>Literature</Category>
+						<Category>Maps</Category>
+						<Category>MedicalSoftware</Category>
+						<Category>Physics</Category>
+						<Category>Robotics</Category>
+						<Category>Sports</Category>
+						<Category>Electronics</Category>
+						<Category>Engineering</Category>
+						<Category>Electricity</Category>
+						<Category>Construction</Category>
+					</Or>
+					<Not>
+						<Category>X-SuSE-Core-Science</Category>
+						<Category>Astronomy</Category>
+						<Category>Chemistry</Category>
+						<Category>DataVisualization</Category>
+						<Category>Geography</Category>
+						<Category>Math</Category>
+						<Category>NumericalAnalysis</Category>
+						<Category>ParallelComputing</Category>
+						<Category>Languages</Category>
+						<Category>Spirituality</Category>
+						<Category>X-KDE-Edu-Teaching</Category>
+						<Category>X-KDE-Edu-Language</Category>
+					</Not>
 				</And>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Languages</Name>
-			<Directory>suse-edutainment-languages.directory</Directory>
+			<Directory>suse-science-languages.directory</Directory>
 			<Include>
-				<Category>Languages</Category>
+				<And>
+					<Category>Science</Category>
+					<Category>Languages</Category>
+				</And>
 				<Category>X-KDE-Edu-Language</Category>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Mathematics</Name>
-			<Directory>suse-edutainment-mathematics.directory</Directory>
+			<Directory>suse-science-mathematics.directory</Directory>
 			<Include>
-				<Category>DataVisualization</Category>
-				<Category>Math</Category>
-				<Category>NumericalAnalysis</Category>
-				<Category>ParallelComputing</Category>
+				<And>
+					<Category>Science</Category>
+					<Or>
+						<Category>DataVisualization</Category>
+						<Category>Math</Category>
+						<Category>NumericalAnalysis</Category>
+						<Category>ParallelComputing</Category>
+					</Or>
+				</And>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Chemistry</Name>
-			<Directory>suse-edutainment-chemical.directory</Directory>
+			<Directory>suse-science-chemical.directory</Directory>
 			<Include>
-				<Category>Chemistry</Category>
+				<And>
+					<Category>Science</Category>
+					<Category>Chemistry</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Astronomy</Name>
+			<Directory>suse-science-astronomy.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Astronomy</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Geography</Name>
+			<Directory>suse-science-geography.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Geography</Category>
+				</And>
+			</Include>
+		</Menu>
+	</Menu>
+	<Menu>
+		<Name>Education</Name>
+		<Directory>suse-education.directory</Directory>
+		<Include>
+			<Category>X-SuSE-Core-Education</Category>
+		</Include>
+		<Menu>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Or>
+						<Category>ArtificialIntelligence</Category>
+						<Category>ComputerScience</Category>
+						<Category>Biology</Category>
+						<Category>Economy</Category>
+						<Category>Electronics</Category>
+						<Category>Geology</Category>
+						<Category>Geoscience</Category>
+						<Category>History</Category>
+						<Category>Humanities</Category>
+						<Category>ImageProcessing</Category>
+						<Category>Literature</Category>
+						<Category>Maps</Category>
+						<Category>MedicalSoftware</Category>
+						<Category>Physics</Category>
+						<Category>Robotics</Category>
+						<Category>Spirituality</Category>
+						<Category>Sports</Category>
+					</Or>
+					<Not>
+						<Category>X-SuSE-Core-Education</Category>
+						<Category>Astronomy</Category>
+						<Category>Chemistry</Category>
+						<Category>DataVisualization</Category>
+						<Category>Geography</Category>
+						<Category>Math</Category>
+						<Category>NumericalAnalysis</Category>
+						<Category>ParallelComputing</Category>
+						<Category>Languages</Category>
+						<Category>Engineering</Category>
+						<Category>Electricity</Category>
+						<Category>Construction</Category>
+						<Category>Music</Category>
+						<Category>Teaching</Category>
+						<Category>Art</Category>
+						<Category>X-KDE-Edu-Teaching</Category>
+						<Category>X-KDE-Edu-Language</Category>
+					</Not>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Languages</Name>
+			<Directory>suse-education-languages.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Or>
+						<Category>Languages</Category>
+						<Category>X-KDE-Edu-Language</Category>
+					</Or>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Mathematics</Name>
+			<Directory>suse-education-mathematics.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Or>
+						<Category>DataVisualization</Category>
+						<Category>Math</Category>
+						<Category>NumericalAnalysis</Category>
+						<Category>ParallelComputing</Category>
+					</Or>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Chemistry</Name>
+			<Directory>suse-education-chemical.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Chemistry</Category>
+				</And>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Music</Name>
-			<Directory>suse-edutainment-music.directory</Directory>
+			<Directory>suse-education-music.directory</Directory>
 			<Include>
 				<And>
-				<Category>Education</Category>
-				<Category>Music</Category>
-				<Not><Category>AudioVideo</Category></Not>
+					<Category>Education</Category>
+					<Category>Music</Category>
+					<Not><Category>AudioVideo</Category></Not>
 				</And>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Teaching</Name>
-			<Directory>suse-edutainment-teaching.directory</Directory>
+			<Directory>suse-education-teaching.directory</Directory>
 			<Include>
-				<Category>X-KDE-Edu-Teaching</Category>
-				<Category>Teaching</Category>
+				<And>
+					<Category>Education</Category>
+					<Or>
+						<Category>X-KDE-Edu-Teaching</Category>
+						<Category>Teaching</Category>
+					</Or>
+				</And>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Art</Name>
-			<Directory>suse-edutainment-art.directory</Directory>
+			<Directory>suse-education-art.directory</Directory>
 			<Include>
-				<Category>Art</Category>
+				<And>
+					<Category>Education</Category>
+					<Category>Art</Category>
+				</And>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Astronomy</Name>
-			<Directory>suse-edutainment-astronomy.directory</Directory>
+			<Directory>suse-education-astronomy.directory</Directory>
 			<Include>
-				<Category>Astronomy</Category>
+				<And>
+					<Category>Education</Category>
+					<Category>Astronomy</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Geography</Name>
+			<Directory>suse-education-geography.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Geography</Category>
+				</And>
 			</Include>
 		</Menu>
 		<Menu>
 			<Name>Construction</Name>
-			<Directory>suse-edutainment-construction.directory</Directory>
+			<Directory>suse-education-construction.directory</Directory>
 			<Include>
-				<Category>Electricity</Category>
-				<Category>Engineering</Category>
-				<Category>Construction</Category>
+				<And>
+					<Category>Education</Category>
+					<Or>
+						<Category>Electricity</Category>
+						<Category>Engineering</Category>
+						<Category>Construction</Category>
+					</Or>
+				</And>
 			</Include>
 		</Menu>
 	</Menu>
@@ -280,6 +435,9 @@
 			<Include>
 				<And>
 				<Category>Game</Category>
+				<Or>
+				<Category>Shooter</Category>
+				</Or>
 				<Not>
 				<Category>X-SuSE-Core-Game</Category>
 				<Category>ArcadeGame</Category>
@@ -290,7 +448,6 @@
 				<Category>3DGame</Category>
 				<Category>Amusement</Category>
 				<Category>PlatformGame</Category>
-				<Category>PuzzleGame</Category>
 				<Category>SportsGame</Category>
 				<Category>FirstPersonGame</Category>
 				<Category>AdventureGame</Category>
@@ -368,7 +525,6 @@
 			<Name>Puzzle</Name>
 			<Directory>suse-games-puzzle.directory</Directory>
 			<Include>
-				<Category>PuzzleGame</Category>
 				<Category>LogicGame</Category>
 			</Include>
 		</Menu>
@@ -499,6 +655,9 @@
 			<Include>
 				<And>
 				<Category>Network</Category>
+				<Or>
+				<Category>NetworkService</Category>
+				</Or>
 				<Not>
 				<Category>X-SuSE-Core-Internet</Category>
 				<Category>Email</Category>
@@ -509,7 +668,9 @@
 				<Category>IRCClient</Category>
 				<Category>News</Category>
 				<Category>X-SuSE-RSS-News</Category>
+				<Category>Feed</Category>
 				<Category>SystemSetup</Category>
+				<Category>X-SuSE-ControlCenter-Personal</Category>
 				<Category>FileTransfer</Category>
 				<Category>P2P</Category>
 				<Category>RemoteAccess</Category>
@@ -602,10 +763,13 @@
 			</Include>
 		</Menu>
 		<Menu>
-			<Name>RSS Reader</Name>
+			<Name>Feed</Name>
 			<Directory>suse-internet-news-feed-reader.directory</Directory>
 			<Include>
+				<Or>
+				<Category>Feed</Category>
 				<Category>X-SuSE-RSS-News</Category>
+				</Or>
 			</Include>
 		</Menu>
 		<Menu>
@@ -674,7 +838,6 @@
 			<Name>VideoPlayer</Name>
 			<Directory>suse-multimedia-videoplayer.directory</Directory>
 			<Include>
-				<Category>Audio</Category>
 				<And>
 				<Category>AudioVideo</Category>
 				<Category>Player</Category>
@@ -684,6 +847,7 @@
 			</Include>
 			<Exclude>
 				<Filename>realplay.desktop</Filename>
+                                <Filename>kde-realplay-kde.desktop</Filename>
 			</Exclude>
 		</Menu>
 		<Menu>
@@ -820,6 +984,7 @@
 				<Category>Chart</Category>
 				<Category>FlowChart</Category>
 				<Category>PDFViewer</Category>
+				<Category>X-SuSE-PDFViewer</Category>
 				<Category>Viewer</Category>
 				<Category>X-SuSE-Editor</Category>
 				<Category>X-SuSE-AddressBook</Category>
@@ -865,6 +1030,7 @@
 			<Directory>suse-office-documentviewer.directory</Directory>
 			<Include>
 				<Category>PDFViewer</Category>
+				<Category>X-SuSE-PDFViewer</Category>
 				<And>
 				<Category>Office</Category>
 				<Category>Viewer</Category>
@@ -980,10 +1146,6 @@
 				<Category>Utility</Category>
 				<Category>Settings</Category>
 				</And>
-				<And>
-				<Category>Utility</Category>
-				<Category>Accessibility</Category>
-				</And>
 				<Category>DesktopSettings</Category>
 				<Category>X-SuSE-DesktopUtility</Category>
 			</Include>
@@ -994,6 +1156,13 @@
 			<Include>
 				<Category>TextEditor</Category>
 				<Category>X-SuSE-Editor</Category>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Accessibility</Name>
+			<Directory>suse-utility-accessibility.directory</Directory>
+			<Include>
+				<Category>Accessibility</Category>
 			</Include>
 		</Menu>
 		<Menu>
@@ -1082,7 +1251,6 @@
 				<Category>System</Category>
 				<Not>
 				<Category>X-SuSE-Core-System</Category>
-				<Category>X-SuSE-YaST</Category>
 				<Category>HardwareSettings</Category>
 				<Category>Emulator</Category>
 				<Category>Monitor</Category>
@@ -1092,6 +1260,7 @@
 				<Category>TerminalEmulator</Category>
 				<Category>Network</Category>
 				<Category>SystemSetup</Category>
+				<Category>X-SuSE-ControlCenter-Personal</Category>
 				<Category>PackageManager</Category>
 				<Category>Utility</Category>
 				<Category>Applet</Category>
@@ -1103,10 +1272,12 @@
 				<Category>FileManager</Category>
 				<Category>Filesystem</Category>
 				<Category>Archiving</Category>
+				<Category>Accessibility</Category>
 				<Category>X-SuSE-Backup</Category>
 				<Category>X-SuSE-ServiceConfiguration</Category>
 				<Category>X-KDE-Settings-Hardware</Category>
 				<Category>Security</Category>
+				<Category>X-SuSE-YaST</Category>
 				</Not>
 				</And>
 				</Include>
@@ -1180,6 +1351,7 @@
 				<Category>HardwareSettings</Category>
 				<Category>SystemSetup</Category>
 				<Category>PackageManager</Category>
+				<Category>X-SuSE-ControlCenter-Personal</Category>
 			</Include>
 		</Menu>
 		<Menu>
@@ -1226,7 +1398,6 @@
 			<Name>Monitor</Name>
 			<Directory>suse-system-monitor.directory</Directory>
 			<Include>
-				<Category>X-KDE-information</Category>
 				<And>
 				<Category>System</Category>
 				<Category>Monitor</Category>
@@ -1246,6 +1417,13 @@
 			<Directory>suse-system-remoteaccess.directory</Directory>
 			<Include>
 				<Category>RemoteAccess</Category>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Virtualization</Name>
+			<Directory>suse-system-virtualization.directory</Directory>
+			<Include>
+				<Category>X-SuSE-YaST-Virtualization</Category>
 			</Include>
 		</Menu>
 		<Menu>
@@ -1275,10 +1453,10 @@
            <Old>YaST</Old><New>Settings/YaST</New>
         </Move>
 	<Menu>
-		<Name>GNOME Settings</Name>
-		<MergeFile>preferences.menu</MergeFile>
+		<Name>KDE 3 Settings</Name>
 		<Directory>Hidden.directory</Directory>
 	</Menu>
 	<DefaultMergeDirs/>
 	<MergeFile>applications-kmenuedit.menu</MergeFile>
+        <MergeFile>custom.menu</MergeFile>
 </Menu>
