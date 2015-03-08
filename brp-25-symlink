@@ -104,7 +104,9 @@ do
     # cleaning out double slash
     strip_slashes link_dest
     link_dest="${link_dest%.}"
-    link_dest="${link_dest%/}"
+    if [ "$link_dest" != '/' ]; then
+	link_dest="${link_dest%/}"
+    fi
 
     # eliminating /./ components
     link_dest="${link_dest//\/.\///}"
