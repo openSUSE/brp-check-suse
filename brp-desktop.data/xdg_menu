@@ -945,6 +945,11 @@ sub interpret_menu ($;$$)
 			interpret_Exclude($tree->[$i], $menu{'entries'}, $pool);
 			$i++;
 		}
+                elsif ($tree->[$i] eq 'DefaultLayout') {
+                        $i++;
+			# just ignore, not important for this test
+                        $i++;
+                }
 		elsif ($tree->[$i] eq '0') {
 			$i++;
 			if ($tree->[$i] !~ /^\s*$/) {
