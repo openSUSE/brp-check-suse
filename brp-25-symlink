@@ -161,7 +161,7 @@ do
 	  if test ! -L ./$link_dest && test ! -e $link_dest && test ! -e ./$link_dest; then
 	    echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
 	    echo "  $link -> $link_dest"
-	    echo "Add the package providing the target to neededforbuild and Requires"
+	    echo "Add the package providing the target to BuildRequires and Requires"
 	    test "$NO_BRP_STALE_LINK_ERROR" != "yes" && had_errors=1
 	  fi
 	  ;;
