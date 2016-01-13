@@ -8,8 +8,8 @@ package:
 	@./mkchanges | tee $(PKG)/.changes
 	@test ! -s $(PKG)/.changes || git push
 	@test -z "`git rev-list remotes/origin/master..master`" || { echo "unpushed changes"; exit 1; }
-	@f=(*bz2); test -z "$f" || /bin/rm -vi *.bz2
+	@f=(*xz); test -z "$f" || /bin/rm -vi *.xz
 	@./mktar
-	@mv *bz2 $(PKG)
+	@mv *xz $(PKG)
 
 .PHONY: all package
