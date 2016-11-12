@@ -18,6 +18,7 @@ FIND_IGNORE=(
     -prune -o
 )
 
+
 # Strip debuginfo from ELF binaries, but not static libraries or kernel modules
 while read f; do
 	mode="$(stat -c %a "$f")"
@@ -36,8 +37,17 @@ done < <(
 while read f; do
 	case $(file "$f") in
 	    *"current ar"*|*ELF*", not stripped"*)
+		t=$(mktemp)
+		e=$(mktemp)
 		chmod u+w "$f" || :
-		strip -p --discard-locals -R .comment -R .note "$f" || :
+		# only commit stripping if strip doesn't output anything on stderr.
+		# unfortunately, strip doesn't return a non-zero error code if it
+		# doesn't recognise an archive, so we need to do this trickery.
+		strip -p --discard-locals -R .comment -R .note -o "$t" "$f" 2>"$e" || :
+		cat "$e" >&2 || :
+		# check stderr
+		[ -z "$(cat "$e")" ] && mv "$t" "$f"
+		rm -f "$t" || :
 		;;
 	    *)
 		echo "WARNING: Strange looking archive $(file $f)"
