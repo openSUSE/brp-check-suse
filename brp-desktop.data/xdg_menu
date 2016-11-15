@@ -1852,7 +1852,7 @@ sub output_validate ($;$)
 			}
 			if ( $menu->{Name} eq 'Applications' or $menu->{Name} eq 'More Programs' ) {
 				$output .= "ERROR: No sufficient Category definition: $desktop->{file} \n";
-				$output .= "Please refer to https://en.opensuse.org/openSUSE:Packaging_desktop_menu_categories";
+				$output .= "Please refer to https://en.opensuse.org/openSUSE:Packaging_desktop_menu_categories\n";
 				$validate_error = 1;
 			}
 
