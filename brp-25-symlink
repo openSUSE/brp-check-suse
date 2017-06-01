@@ -143,6 +143,8 @@ do
 	     continue;;
 	/sbin/init,*) # don't create absolute symlink for /sbin/init
 	     continue;;
+	/etc/os-release,*) # don't create absolute symlink for /etc/os-release (boo#1028408).
+	     continue;;
         *,/etc/alternatives/*) # white list alternatives
              ;;
 	*share/automake-*)
