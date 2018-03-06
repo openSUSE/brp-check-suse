@@ -1801,7 +1801,7 @@ sub find_icon ($@)
 {
 	my $icon = shift;
 	my @icon_dirs = ();
-	my @themes = ('pixmaps','icons/hicolor','icons/Adwaita');
+	my @themes = ('pixmaps','icons/hicolor');
 	push @themes, @_;
 	my @sizes = ('16x16','22x22','24x24','32x32','36x36','48x48',
 		     '64x64','72x72','96x96','128x128','192x192','scalable');
