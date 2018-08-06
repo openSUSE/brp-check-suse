@@ -84,7 +84,7 @@ do
     orig_link_dest="$link_dest"
 
     new_link_dest=NONE
-    link_dir="$(dirname_int $link)"
+    link_dir=$(dirname_int "$link")
 
     case $link_dest in
 	.|..|../..) # link to current dir
@@ -160,7 +160,7 @@ do
 	*,/proc/*) # links pointing into /proc file system
 	     ;;
 	*)
-	  if test ! -L ./$link_dest && test ! -e $link_dest && test ! -e ./$link_dest; then
+	  if test ! -L ./"$link_dest" && test ! -e "$link_dest" && test ! -e ./"$link_dest"; then
 	    echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
 	    echo "  $link -> $link_dest"
 	    echo "Add the package providing the target to BuildRequires and Requires"
@@ -179,11 +179,11 @@ do
       fi
     done
 
-    dest_dir="$(dirname_int $link_dest)"
+    dest_dir=$(dirname_int "$link_dest")
 
     # figuring out (currently) correct destination
     if [ "$link_dir" = "$dest_dir" -o  "$dest_dir" = "." ]; then
-	new_link_dest="$(basename_int $link_dest)"
+	new_link_dest=$(basename_int "$link_dest")
     else
 	# figuring out top level directory
         top_dir "$link" top_link
@@ -210,7 +210,7 @@ do
 	    done
 
 	    # now we add a .. for every directory component
-	    link_tmp="$(dirname_int $link_tmp)"
+	    link_tmp=$(dirname_int "$link_tmp")
 
 	    if [ "$link_tmp" = "$link_dest" ]; then
 		new_link_dest=.
@@ -237,7 +237,7 @@ do
 
     if [ "$new_link_dest" != NONE -a "$new_link_dest" != "$orig_link_dest" ]; then
 	echo "INFO: relinking $link -> $new_link_dest (was $orig_link_dest)"
-	rm ./$link && ln -s $new_link_dest ./$link
+	rm ./"$link" && ln -s "$new_link_dest" ./"$link"
     fi
 done < <(find . -type l -printf '%p|%h|%l\n')
 
