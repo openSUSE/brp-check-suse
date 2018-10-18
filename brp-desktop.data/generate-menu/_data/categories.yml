@@ -1,0 +1,256 @@
+# Definition of categories for openSUSE, for checking correct category asignment
+# You can use categories in desktop files like Category=category;category;
+# Eg: Category=Graphics;2DGraphics;RasterGraphics;
+- category: Audio
+  subcategories:
+  - category: AudioVideoEditing
+  - category: HamRadio
+  - category: Midi
+  - category: Mixer
+  - category: Player
+  - category: Recorder
+  - category: Sequencer
+  - category: Tuner
+  main: X-SuSE-Core-Multimedia
+  directory: suse-multimedia.directory
+- category: AudioVideo
+  subcategories:
+  - category: AudioVideoEditing
+  - category: Database
+  - category: DiscBurning
+  - category: Midi
+  - category: Mixer
+  - category: Music
+  - category: Player
+  - category: Recorder
+  - category: Sequencer
+  - category: TV
+  - category: Tuner
+  main: X-SuSE-Core-Multimedia
+  directory: suse-multimedia.directory
+- category: Development
+  subcategories:
+  - category: Building
+  - category: Database
+  - category: Debugger
+  - category: Documentation
+  - category: GUIDesigner
+  - category: IDE
+  - category: Profiling
+  - category: ProjectManagement
+  - category: RevisionControl
+  - category: Translation
+  - category: WebDevelopment
+  - category: X-SuSE-Design
+  main: X-SuSE-Core-Development
+  directory: suse-development.directory
+- category: Education
+  subcategories:
+  - category: Art
+  - category: ArtificialIntelligence
+  - category: Astronomy
+  - category: Biology
+  - category: Chemistry
+  - category: ComputerScience
+  - category: Construction
+  - category: DataVisualization
+  - category: Economy
+  - category: Electricity
+  - category: Engineering
+  - category: Geography
+  - category: Geology
+  - category: Geoscience
+  - category: History
+  - category: Humanities
+  - category: ImageProcessing
+  - category: Languages
+  - category: Literature
+  - category: Maps
+  - category: Math
+    subcategories:
+    - category: NumericalAnalysis
+    - category: ParallelComputing
+  - category: MedicalSoftware
+  - category: Music
+  - category: NumericalAnalysis
+  - category: ParallelComputing
+  - category: Physics
+  - category: Robotics
+  - category: Spirituality
+  - category: Sports
+  - category: X-KDE-Edu-Teaching
+  main: X-SuSE-Core-Education
+  directory: suse-education.directory
+- category: Game
+  subcategories:
+  - category: ActionGame
+  - category: AdventureGame
+  - category: Amusement
+  - category: ArcadeGame
+  - category: BlocksGame
+  - category: BoardGame
+  - category: CardGame
+  - category: Emulator
+  - category: KidsGame
+  - category: LogicGame
+  - category: PlatformGame
+  - category: RolePlaying
+  - category: Shooter
+  - category: Simulation
+  - category: SportsGame
+  - category: StrategyGame
+  main: X-SuSE-Core-Game
+  directory: suse-games.directory
+- category: Graphics
+  subcategories:
+  - category: 2DGraphics
+    subcategories:
+    - category: RasterGraphics
+    - category: VectorGraphics
+  - category: 3DGraphics
+  - category: OCR
+  - category: Photography
+  - category: Publishing
+  - category: RasterGraphics
+  - category: Scanning
+    subcategories:
+    - category: OCR
+  - category: VectorGraphics
+  - category: Viewer
+  main: X-SuSE-Core-Graphics
+  directory: suse-graphics.directory
+- category: Network
+  subcategories:
+  - category: Chat
+  - category: Dialup
+  - category: Email
+  - category: Feed
+  - category: FileTransfer
+  - category: HamRadio
+  - category: IRCClient
+  - category: InstantMessaging
+  - category: Monitor
+  - category: News
+  - category: P2P
+  - category: RemoteAccess
+  - category: Telephony
+  - category: VideoConference
+  - category: WebBrowser
+  - category: WebDevelopment
+  main: X-SuSE-Core-Network
+  directory: suse-network.directory
+- category: Office
+  subcategories:
+  - category: Calendar
+  - category: Chart
+  - category: ContactManagement
+  - category: Database
+  - category: Dictionary
+  - category: Email
+  - category: Finance
+  - category: FlowChart
+  - category: PDA
+  - category: Photography
+  - category: Presentation
+  - category: ProjectManagement
+  - category: Publishing
+  - category: Spreadsheet
+  - category: TextTools
+    subcategories:
+    - category: Dictionary
+  - category: Viewer
+  - category: WordProcessor
+  main: X-SuSE-Core-Office
+  directory: suse-office.directory
+- category: Science
+  subcategories:
+  - category: Art
+  - category: ArtificialIntelligence
+  - category: Astronomy
+  - category: Biology
+  - category: Chemistry
+  - category: ComputerScience
+  - category: Construction
+  - category: DataVisualization
+  - category: Economy
+  - category: Electricity
+  - category: Engineering
+  - category: Geography
+  - category: Geology
+  - category: Geoscience
+  - category: History
+  - category: Humanities
+  - category: ImageProcessing
+  - category: Languages
+  - category: Literature
+  - category: Maps
+  - category: Math
+    subcategories:
+    - category: NumericalAnalysis
+    - category: ParallelComputing
+  - category: MedicalSoftware
+  - category: NumericalAnalysis
+  - category: ParallelComputing
+  - category: Physics
+  - category: Robotics
+  - category: Spirituality
+  - category: Sports
+  main: X-SuSE-Core-Science
+  directory: suse-science.directory
+- category: Settings
+  subcategories:
+  - category: Accessibility
+  - category: DesktopSettings
+  - category: HardwareSettings
+  - category: PackageManager
+  - category: Printing
+  - category: Security
+  directory: suse-settings.directory
+- category: System
+  subcategories:
+  - category: Documentation
+  - category: Emulator
+  - category: FileManager
+  - category: FileTools
+  - category: Filesystem
+  - category: HardwareSettings
+  - category: Monitor
+  - category: Security
+  - category: System
+  - category: TerminalEmulator
+  directory: suse-system.directory
+  main: X-SuSE-Core-System
+- category: Utility
+  subcategories:
+  - category: Accessibility
+  - category: Applet
+  - category: Archiving
+  - category: Calculator
+  - category: Clock
+  - category: Compression
+  - category: FileTools
+    subcategories:
+    - category: FileManager
+  - category: FileManager
+  - category: Filesystem
+  - category: Printing
+  - category: Maps
+  - category: Security
+  - category: Settings
+  - category: Spirituality
+  - category: TelephonyTools
+  - category: TextEditor
+  - category: X-SuSE-DesktopUtility
+  - category: X-SuSE-SyncUtility
+  - category: X-SuSE-TimeUtility
+  - category: X-SuSE-WebUtility
+  main: X-SuSE-Core-Utility
+  directory: suse-utility.directory
+- category: Video
+  subcategories:
+  - category: AudioVideoEditing
+  - category: Player
+  - category: Recorder
+  - category: TV
+  main: X-SuSE-Core-Multimedia
+  directory: suse-multimedia.directory

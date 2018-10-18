@@ -1,0 +1,93 @@
+---
+---
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+"http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+	<Name>SuSE</Name>
+	<Directory>suse-main.directory</Directory>
+	<!-- Search the default locations -->
+	<KDELegacyDirs/>
+	<DefaultAppDirs/>
+	<DefaultDirectoryDirs/>
+	<DefaultLayout inline="true" inline_limit="1">
+		<Merge type="menus"/>
+		<Merge type="files"/>
+	</DefaultLayout>
+
+	<Include>
+		<Category>X-SuSE-core</Category>
+	</Include>
+
+	<Menu>
+		<OnlyUnallocated/>
+		<Name>Applications</Name>
+		<Directory>suse-applications.directory</Directory>
+		<Include>
+			<All/>
+		</Include>
+	</Menu>
+	{% for category in site.data.categories %}
+	<Menu>
+		<Name>{{ category.category }}</Name>
+		<Directory>{{ category.directory }}</Directory>
+		<Include>
+			<Category>{{ category.main }}</Category>
+		</Include>
+		<Menu>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>{{ category.category }}</Category>
+				<Not>
+				<Category>{{ category.main }}</Category>{% for subcategory in category.subcategories %}
+				<Category>{{ subcategory.category }}</Category>{% endfor %}
+				</Not>
+				</And>
+			</Include>
+		</Menu>
+		{% for subcategory in category.subcategories %}
+		<Menu>
+			<Name>{{ subcategory.category }}</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>{{ category.category }}</Category>
+				<Category>{{ subcategory.category }}</Category>
+				</And>
+			</Include>
+			{% for subsubcategory in subcategory.subcategories %}
+			<Menu>
+				<Name>{{ subsubcategory.category }}</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>{{ category.category }}</Category>
+					<Category>{{ subcategory.category }}</Category>
+					<Category>{{ subsubcategory.category }}</Category>
+					</And>
+				</Include>
+			</Menu>
+			{% endfor %}
+		</Menu>
+		{% endfor %}
+	</Menu>
+	{% endfor %}
+	<Menu>
+		<Name>Settings</Name>
+		<Directory>suse-settings.directory</Directory>
+		<Include>
+			<Category>X-SuSE-Core-Configuration</Category>
+		</Include>
+		<MergeFile>kde-settings.menu</MergeFile>
+	</Menu>
+	<Menu>
+		<Name>YaST</Name>
+		<Directory>suse-yast.directory</Directory>
+		<MergeFile>yast-settings.menu</MergeFile>
+	</Menu>
+
+	<DefaultMergeDirs/>
+	<MergeFile>custom.menu</MergeFile>
+</Menu>

@@ -1,5 +1,5 @@
- <!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
-  "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+"http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
 
 <Menu>
 	<Name>SuSE</Name>
@@ -25,7 +25,296 @@
 			<All/>
 		</Include>
 	</Menu>
-
+	
+	<Menu>
+		<Name>Audio</Name>
+		<Directory>suse-multimedia.directory</Directory>
+		<Include>
+			<Category>X-SuSE-Core-Multimedia</Category>
+		</Include>
+		<Menu>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Not>
+				<Category>X-SuSE-Core-Multimedia</Category>
+				<Category>AudioVideoEditing</Category>
+				<Category>HamRadio</Category>
+				<Category>Midi</Category>
+				<Category>Mixer</Category>
+				<Category>Player</Category>
+				<Category>Recorder</Category>
+				<Category>Sequencer</Category>
+				<Category>Tuner</Category>
+				</Not>
+				</And>
+			</Include>
+		</Menu>
+		
+		<Menu>
+			<Name>AudioVideoEditing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>AudioVideoEditing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>HamRadio</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>HamRadio</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Midi</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>Midi</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Mixer</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>Mixer</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Player</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>Player</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Recorder</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>Recorder</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Sequencer</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>Sequencer</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Tuner</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Audio</Category>
+				<Category>Tuner</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+	</Menu>
+	
+	<Menu>
+		<Name>AudioVideo</Name>
+		<Directory>suse-multimedia.directory</Directory>
+		<Include>
+			<Category>X-SuSE-Core-Multimedia</Category>
+		</Include>
+		<Menu>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Not>
+				<Category>X-SuSE-Core-Multimedia</Category>
+				<Category>AudioVideoEditing</Category>
+				<Category>Database</Category>
+				<Category>DiscBurning</Category>
+				<Category>Midi</Category>
+				<Category>Mixer</Category>
+				<Category>Music</Category>
+				<Category>Player</Category>
+				<Category>Recorder</Category>
+				<Category>Sequencer</Category>
+				<Category>TV</Category>
+				<Category>Tuner</Category>
+				</Not>
+				</And>
+			</Include>
+		</Menu>
+		
+		<Menu>
+			<Name>AudioVideoEditing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>AudioVideoEditing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Database</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Database</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>DiscBurning</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>DiscBurning</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Midi</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Midi</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Mixer</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Mixer</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Music</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Music</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Player</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Player</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Recorder</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Recorder</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Sequencer</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Sequencer</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>TV</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>TV</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Tuner</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>AudioVideo</Category>
+				<Category>Tuner</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+	</Menu>
+	
 	<Menu>
 		<Name>Development</Name>
 		<Directory>suse-development.directory</Directory>
@@ -40,229 +329,169 @@
 				<Category>Development</Category>
 				<Not>
 				<Category>X-SuSE-Core-Development</Category>
-				<Category>IDE</Category>
-				<Category>GUIDesigner</Category>
-				<Category>Documentation</Category>
 				<Category>Building</Category>
+				<Category>Database</Category>
 				<Category>Debugger</Category>
+				<Category>Documentation</Category>
+				<Category>GUIDesigner</Category>
+				<Category>IDE</Category>
 				<Category>Profiling</Category>
+				<Category>ProjectManagement</Category>
 				<Category>RevisionControl</Category>
 				<Category>Translation</Category>
+				<Category>WebDevelopment</Category>
 				<Category>X-SuSE-Design</Category>
 				</Not>
 				</And>
 			</Include>
 		</Menu>
-		<Menu>
-			<Name>Design</Name>
-			<Directory>suse-development-design.directory</Directory>
-			<Include>
-				<And>
-				<Category>Development</Category>
-				<Category>X-SuSE-Design</Category>
-				</And>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>Building</Name>
-			<Directory>suse-development-building.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Development</Category>
 				<Category>Building</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>RevisionControl</Name>
-			<Directory>suse-development-revisioncontrol.directory</Directory>
+			<Name>Database</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Development</Category>
-				<Category>RevisionControl</Category>
+				<Category>Database</Category>
 				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Translation</Name>
-			<Directory>suse-development-translation.directory</Directory>
-			<Include>
-				<And>
-				<Category>Development</Category>
-				<Category>Translation</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Documentation</Name>
-			<Directory>suse-documentation.directory</Directory>
-			<Include>
-				<And>
-				<Category>Development</Category>
-				<Category>Documentation</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>GUI Designer</Name>
-			<Directory>suse-development-guidesigner.directory</Directory>
-			<Include>
-				<And>
-				<Category>Development</Category>
-				<Category>GUIDesigner</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Design</Name>
-			<Directory>suse-development-design.directory</Directory>
-			<Include>
-				<And>
-				<Category>Development</Category>
-				<Category>X-SuSE-Design</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>IDE</Name>
-			<Directory>suse-development-ide.directory</Directory>
-			<Include>
-				<And>
-				<Category>Development</Category>
-				<Category>IDE</Category>
-				</And>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>Debugger</Name>
-			<Directory>suse-development-debugger.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Development</Category>
 				<Category>Debugger</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>Documentation</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Development</Category>
+				<Category>Documentation</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>GUIDesigner</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Development</Category>
+				<Category>GUIDesigner</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>IDE</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Development</Category>
+				<Category>IDE</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>Profiling</Name>
-			<Directory>suse-development-profiling.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Development</Category>
 				<Category>Profiling</Category>
 				</And>
 			</Include>
+			
 		</Menu>
-	</Menu>
-	<Menu>
-		<Name>Science</Name>
-		<Directory>suse-science.directory</Directory>
-		<Include>
-			<Category>X-SuSE-Core-Science</Category>
-		</Include>
+		
 		<Menu>
-			<Name>More Programs</Name>
+			<Name>ProjectManagement</Name>
 			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Science</Category>
-					<Or>
-						<Category>Art</Category>
-						<Category>Artificial Intelligence</Category>
-						<Category>Biology</Category>
-						<Category>Construction</Category>
-						<Category>ComputerScience</Category>
-						<Category>Economy</Category>
-						<Category>Geology</Category>
-						<Category>Geoscience</Category>
-						<Category>History</Category>
-						<Category>Humanities</Category>
-						<Category>ImageProcessing</Category>
-						<Category>Literature</Category>
-						<Category>Maps</Category>
-						<Category>MedicalSoftware</Category>
-						<Category>Physics</Category>
-						<Category>Robotics</Category>
-						<Category>Sports</Category>
-						<Category>Electronics</Category>
-						<Category>Engineering</Category>
-						<Category>Electricity</Category>
-						<Category>Construction</Category>
-					</Or>
-					<Not>
-						<Category>X-SuSE-Core-Science</Category>
-						<Category>Astronomy</Category>
-						<Category>Chemistry</Category>
-						<Category>DataVisualization</Category>
-						<Category>Geography</Category>
-						<Category>Math</Category>
-						<Category>NumericalAnalysis</Category>
-						<Category>ParallelComputing</Category>
-						<Category>Languages</Category>
-						<Category>Spirituality</Category>
-						<Category>X-KDE-Edu-Teaching</Category>
-						<Category>X-KDE-Edu-Language</Category>
-					</Not>
+				<Category>Development</Category>
+				<Category>ProjectManagement</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Languages</Name>
-			<Directory>suse-science-languages.directory</Directory>
+			<Name>RevisionControl</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Science</Category>
-					<Category>Languages</Category>
+				<Category>Development</Category>
+				<Category>RevisionControl</Category>
 				</And>
-				<Category>X-KDE-Edu-Language</Category>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Mathematics</Name>
-			<Directory>suse-science-mathematics.directory</Directory>
+			<Name>Translation</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Science</Category>
-					<Or>
-						<Category>DataVisualization</Category>
-						<Category>Math</Category>
-						<Category>NumericalAnalysis</Category>
-						<Category>ParallelComputing</Category>
-					</Or>
+				<Category>Development</Category>
+				<Category>Translation</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Chemistry</Name>
-			<Directory>suse-science-chemical.directory</Directory>
+			<Name>WebDevelopment</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Science</Category>
-					<Category>Chemistry</Category>
+				<Category>Development</Category>
+				<Category>WebDevelopment</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Astronomy</Name>
-			<Directory>suse-science-astronomy.directory</Directory>
+			<Name>X-SuSE-Design</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Science</Category>
-					<Category>Astronomy</Category>
+				<Category>Development</Category>
+				<Category>X-SuSE-Design</Category>
 				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Geography</Name>
-			<Directory>suse-science-geography.directory</Directory>
-			<Include>
-				<And>
-					<Category>Science</Category>
-					<Category>Geography</Category>
-				</And>
-			</Include>
-		</Menu>
+		
 	</Menu>
+	
 	<Menu>
 		<Name>Education</Name>
 		<Directory>suse-education.directory</Directory>
@@ -274,157 +503,432 @@
 			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Education</Category>
-					<Or>
-						<Category>ArtificialIntelligence</Category>
-						<Category>ComputerScience</Category>
-						<Category>Biology</Category>
-						<Category>Economy</Category>
-						<Category>Electronics</Category>
-						<Category>Geology</Category>
-						<Category>Geoscience</Category>
-						<Category>History</Category>
-						<Category>Humanities</Category>
-						<Category>ImageProcessing</Category>
-						<Category>Literature</Category>
-						<Category>Maps</Category>
-						<Category>MedicalSoftware</Category>
-						<Category>Physics</Category>
-						<Category>Robotics</Category>
-						<Category>Spirituality</Category>
-						<Category>Sports</Category>
-					</Or>
-					<Not>
-						<Category>X-SuSE-Core-Education</Category>
-						<Category>Astronomy</Category>
-						<Category>Chemistry</Category>
-						<Category>DataVisualization</Category>
-						<Category>Geography</Category>
-						<Category>Math</Category>
-						<Category>NumericalAnalysis</Category>
-						<Category>ParallelComputing</Category>
-						<Category>Languages</Category>
-						<Category>Engineering</Category>
-						<Category>Electricity</Category>
-						<Category>Construction</Category>
-						<Category>Music</Category>
-						<Category>Teaching</Category>
-						<Category>Art</Category>
-						<Category>X-KDE-Edu-Teaching</Category>
-						<Category>X-KDE-Edu-Language</Category>
-					</Not>
+				<Category>Education</Category>
+				<Not>
+				<Category>X-SuSE-Core-Education</Category>
+				<Category>Art</Category>
+				<Category>ArtificialIntelligence</Category>
+				<Category>Astronomy</Category>
+				<Category>Biology</Category>
+				<Category>Chemistry</Category>
+				<Category>ComputerScience</Category>
+				<Category>Construction</Category>
+				<Category>DataVisualization</Category>
+				<Category>Economy</Category>
+				<Category>Electricity</Category>
+				<Category>Engineering</Category>
+				<Category>Geography</Category>
+				<Category>Geology</Category>
+				<Category>Geoscience</Category>
+				<Category>History</Category>
+				<Category>Humanities</Category>
+				<Category>ImageProcessing</Category>
+				<Category>Languages</Category>
+				<Category>Literature</Category>
+				<Category>Maps</Category>
+				<Category>Math</Category>
+				<Category>MedicalSoftware</Category>
+				<Category>Music</Category>
+				<Category>NumericalAnalysis</Category>
+				<Category>ParallelComputing</Category>
+				<Category>Physics</Category>
+				<Category>Robotics</Category>
+				<Category>Spirituality</Category>
+				<Category>Sports</Category>
+				<Category>X-KDE-Edu-Teaching</Category>
+				</Not>
 				</And>
 			</Include>
 		</Menu>
-		<Menu>
-			<Name>Languages</Name>
-			<Directory>suse-education-languages.directory</Directory>
-			<Include>
-				<And>
-					<Category>Education</Category>
-					<Or>
-						<Category>Languages</Category>
-						<Category>X-KDE-Edu-Language</Category>
-					</Or>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Mathematics</Name>
-			<Directory>suse-education-mathematics.directory</Directory>
-			<Include>
-				<And>
-					<Category>Education</Category>
-					<Or>
-						<Category>DataVisualization</Category>
-						<Category>Math</Category>
-						<Category>NumericalAnalysis</Category>
-						<Category>ParallelComputing</Category>
-					</Or>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Chemistry</Name>
-			<Directory>suse-education-chemical.directory</Directory>
-			<Include>
-				<And>
-					<Category>Education</Category>
-					<Category>Chemistry</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Music</Name>
-			<Directory>suse-education-music.directory</Directory>
-			<Include>
-				<And>
-					<Category>Education</Category>
-					<Category>Music</Category>
-					<Not><Category>AudioVideo</Category></Not>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Teaching</Name>
-			<Directory>suse-education-teaching.directory</Directory>
-			<Include>
-				<And>
-					<Category>Education</Category>
-					<Or>
-						<Category>X-KDE-Edu-Teaching</Category>
-						<Category>Teaching</Category>
-					</Or>
-				</And>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>Art</Name>
-			<Directory>suse-education-art.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Education</Category>
-					<Category>Art</Category>
+				<Category>Education</Category>
+				<Category>Art</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>ArtificialIntelligence</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>ArtificialIntelligence</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>Astronomy</Name>
-			<Directory>suse-education-astronomy.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Education</Category>
-					<Category>Astronomy</Category>
+				<Category>Education</Category>
+				<Category>Astronomy</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Geography</Name>
-			<Directory>suse-education-geography.directory</Directory>
+			<Name>Biology</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Education</Category>
-					<Category>Geography</Category>
+				<Category>Education</Category>
+				<Category>Biology</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>Chemistry</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Chemistry</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ComputerScience</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>ComputerScience</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>Construction</Name>
-			<Directory>suse-education-construction.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Education</Category>
-					<Or>
-						<Category>Electricity</Category>
-						<Category>Engineering</Category>
-						<Category>Construction</Category>
-					</Or>
+				<Category>Education</Category>
+				<Category>Construction</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>DataVisualization</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>DataVisualization</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Economy</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Economy</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Electricity</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Electricity</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Engineering</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Engineering</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Geography</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Geography</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Geology</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Geology</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Geoscience</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Geoscience</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>History</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>History</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Humanities</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Humanities</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ImageProcessing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>ImageProcessing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Languages</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Languages</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Literature</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Literature</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Maps</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Maps</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Math</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Math</Category>
+				</And>
+			</Include>
+			
+			<Menu>
+				<Name>NumericalAnalysis</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Education</Category>
+					<Category>Math</Category>
+					<Category>NumericalAnalysis</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+			<Menu>
+				<Name>ParallelComputing</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Education</Category>
+					<Category>Math</Category>
+					<Category>ParallelComputing</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>MedicalSoftware</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>MedicalSoftware</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Music</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Music</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>NumericalAnalysis</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>NumericalAnalysis</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ParallelComputing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>ParallelComputing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Physics</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Physics</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Robotics</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Robotics</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Spirituality</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Spirituality</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Sports</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>Sports</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>X-KDE-Edu-Teaching</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Education</Category>
+				<Category>X-KDE-Edu-Teaching</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 	</Menu>
+	
 	<Menu>
-		<Name>Games</Name>
+		<Name>Game</Name>
 		<Directory>suse-games.directory</Directory>
 		<Include>
 			<Category>X-SuSE-Core-Game</Category>
@@ -435,128 +939,223 @@
 			<Include>
 				<And>
 				<Category>Game</Category>
-				<Or>
-				<Category>Shooter</Category>
-				</Or>
 				<Not>
 				<Category>X-SuSE-Core-Game</Category>
+				<Category>ActionGame</Category>
+				<Category>AdventureGame</Category>
+				<Category>Amusement</Category>
 				<Category>ArcadeGame</Category>
 				<Category>BlocksGame</Category>
 				<Category>BoardGame</Category>
 				<Category>CardGame</Category>
-				<Category>StrategyGame</Category>
-				<Category>3DGame</Category>
-				<Category>Amusement</Category>
-				<Category>PlatformGame</Category>
-				<Category>SportsGame</Category>
-				<Category>FirstPersonGame</Category>
-				<Category>AdventureGame</Category>
-				<Category>X-KDE-KidsGame</Category>
-				<Category>ActionGame</Category>
+				<Category>Emulator</Category>
 				<Category>KidsGame</Category>
 				<Category>LogicGame</Category>
-				<Category>Simulation</Category>
+				<Category>PlatformGame</Category>
 				<Category>RolePlaying</Category>
+				<Category>Shooter</Category>
+				<Category>Simulation</Category>
+				<Category>SportsGame</Category>
+				<Category>StrategyGame</Category>
 				</Not>
 				</And>
 			</Include>
 		</Menu>
+		
 		<Menu>
-			<Name>Action</Name>
-			<Directory>suse-games-action.directory</Directory>
+			<Name>ActionGame</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Game</Category>
 				<Category>ActionGame</Category>
-				<Category>FirstPersonGame</Category>
-				<Category>PlatformGame</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Arcade</Name>
-			<Directory>suse-games-arcade.directory</Directory>
+			<Name>AdventureGame</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>ArcadeGame</Category>
-				<Category>BlocksGame</Category>
+				<And>
+				<Category>Game</Category>
+				<Category>AdventureGame</Category>
+				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Board</Name>
-			<Directory>suse-games-board.directory</Directory>
-			<Include>
-				<Category>BoardGame</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Card</Name>
-			<Directory>suse-games-card.directory</Directory>
-			<Include>
-				<Category>CardGame</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Kidsgames</Name>
-			<Directory>suse-games-kidsgames.directory</Directory>
-			<Include>
-				<Category>X-KDE-KidsGame</Category>
-				<Category>KidsGame</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>TacticStrategy</Name>
-			<Directory>suse-games-strategy.directory</Directory>
-			<Include>
-				<Category>StrategyGame</Category>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>Amusement</Name>
-			<Directory>suse-games-amusement.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Game</Category>
 				<Category>Amusement</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Platform</Name>
-			<Directory>suse-games-platformgame.directory</Directory>
+			<Name>ArcadeGame</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>PlatformGame</Category>
+				<And>
+				<Category>Game</Category>
+				<Category>ArcadeGame</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Puzzle</Name>
-			<Directory>suse-games-puzzle.directory</Directory>
+			<Name>BlocksGame</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>BlocksGame</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>BoardGame</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>BoardGame</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>CardGame</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>CardGame</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Emulator</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>Emulator</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>KidsGame</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>KidsGame</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>LogicGame</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
 				<Category>LogicGame</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Sport</Name>
-			<Directory>suse-games-sports.directory</Directory>
+			<Name>PlatformGame</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>SportsGame</Category>
+				<And>
+				<Category>Game</Category>
+				<Category>PlatformGame</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Adventure</Name>
-			<Directory>suse-games-adventure.directory</Directory>
+			<Name>RolePlaying</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>AdventureGame</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Role-Playing</Name>
-			<Directory>suse-games-role-playing.directory</Directory>
-			<Include>
+				<And>
+				<Category>Game</Category>
 				<Category>RolePlaying</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>Shooter</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>Shooter</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>Simulation</Name>
-			<Directory>suse-games-simulation.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Game</Category>
 				<Category>Simulation</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>SportsGame</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>SportsGame</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>StrategyGame</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Game</Category>
+				<Category>StrategyGame</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 	</Menu>
+	
 	<Menu>
 		<Name>Graphics</Name>
 		<Directory>suse-graphics.directory</Directory>
@@ -566,88 +1165,176 @@
 		<Menu>
 			<Name>More Programs</Name>
 			<Directory>suse-more.directory</Directory>
-				<Include>
+			<Include>
 				<And>
 				<Category>Graphics</Category>
 				<Not>
 				<Category>X-SuSE-Core-Graphics</Category>
 				<Category>2DGraphics</Category>
-				<Category>RasterGraphics</Category>
-				<Category>VectorGraphics</Category>
-				<Category>Scanning</Category>
+				<Category>3DGraphics</Category>
 				<Category>OCR</Category>
 				<Category>Photography</Category>
+				<Category>Publishing</Category>
+				<Category>RasterGraphics</Category>
+				<Category>Scanning</Category>
+				<Category>VectorGraphics</Category>
 				<Category>Viewer</Category>
-				<Category>3DGraphics</Category>
 				</Not>
 				</And>
 			</Include>
 		</Menu>
+		
 		<Menu>
-			<Name>Scanning</Name>
-			<Directory>suse-graphics-scanning.directory</Directory>
+			<Name>2DGraphics</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>Scanning</Category>
-				<Category>OCR</Category>
+				<And>
+				<Category>Graphics</Category>
+				<Category>2DGraphics</Category>
+				</And>
 			</Include>
+			
+			<Menu>
+				<Name>RasterGraphics</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Graphics</Category>
+					<Category>2DGraphics</Category>
+					<Category>RasterGraphics</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+			<Menu>
+				<Name>VectorGraphics</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Graphics</Category>
+					<Category>2DGraphics</Category>
+					<Category>VectorGraphics</Category>
+					</And>
+				</Include>
+			</Menu>
+			
 		</Menu>
+		
 		<Menu>
 			<Name>3DGraphics</Name>
-			<Directory>suse-graphics-3dgraphics.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Graphics</Category>
 				<Category>3DGraphics</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>OCR</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Graphics</Category>
+				<Category>OCR</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Photography</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Graphics</Category>
+				<Category>Photography</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Publishing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Graphics</Category>
+				<Category>Publishing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>RasterGraphics</Name>
-			<Directory>suse-graphics-rastergraphics.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>2DGraphics</Category>
-				<Not><Category>Viewer</Category></Not>
-				</And>
-				<And>
+				<Category>Graphics</Category>
 				<Category>RasterGraphics</Category>
-				<Not><Category>Viewer</Category></Not>
 				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>Scanning</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Graphics</Category>
+				<Category>Scanning</Category>
+				</And>
+			</Include>
+			
+			<Menu>
+				<Name>OCR</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Graphics</Category>
+					<Category>Scanning</Category>
+					<Category>OCR</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>VectorGraphics</Name>
-			<Directory>suse-graphics-vectorgraphics.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Graphics</Category>
 				<Category>VectorGraphics</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
 			<Name>Viewer</Name>
-			<Directory>suse-graphics-viewer.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Graphics</Category>
 				<Category>Viewer</Category>
-				<Not>
-				<Category>Office</Category>
-				<Category>3DGraphics</Category>
-				<Category>VectorGraphics</Category>
-				<Category>Photography</Category>
-				</Not>
 				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Photography</Name>
-			<Directory>suse-graphics-photography.directory</Directory>
-			<Include>
-				<Category>Photography</Category>
-			</Include>
-		</Menu>
+		
 	</Menu>
+	
 	<Menu>
-		<Name>Internet</Name>
-		<Directory>suse-internet.directory</Directory>
+		<Name>Network</Name>
+		<Directory>suse-network.directory</Directory>
 		<Include>
-			<Category>X-SuSE-Core-Internet</Category>
+			<Category>X-SuSE-Core-Network</Category>
 		</Include>
 		<Menu>
 			<Name>More Programs</Name>
@@ -655,308 +1342,223 @@
 			<Include>
 				<And>
 				<Category>Network</Category>
-				<Or>
-				<Category>NetworkService</Category>
-				</Or>
 				<Not>
-				<Category>X-SuSE-Core-Internet</Category>
+				<Category>X-SuSE-Core-Network</Category>
+				<Category>Chat</Category>
+				<Category>Dialup</Category>
 				<Category>Email</Category>
-				<Category>HamRadio</Category>
-				<Category>Monitor</Category>
-				<Category>Office</Category>
-				<Category>InstantMessaging</Category>
-				<Category>IRCClient</Category>
-				<Category>News</Category>
-				<Category>X-SuSE-RSS-News</Category>
 				<Category>Feed</Category>
-				<Category>SystemSetup</Category>
-				<Category>X-SuSE-ControlCenter-Personal</Category>
 				<Category>FileTransfer</Category>
+				<Category>HamRadio</Category>
+				<Category>IRCClient</Category>
+				<Category>InstantMessaging</Category>
+				<Category>Monitor</Category>
+				<Category>News</Category>
 				<Category>P2P</Category>
 				<Category>RemoteAccess</Category>
 				<Category>Telephony</Category>
+				<Category>VideoConference</Category>
 				<Category>WebBrowser</Category>
 				<Category>WebDevelopment</Category>
-				<Category>Dialup</Category>
-				<Category>Filesystem</Category>
-				<Category>System</Category>
 				</Not>
 				</And>
 			</Include>
 		</Menu>
+		
 		<Menu>
-			<Name>E-Mail</Name>
-			<Directory>suse-internet-email.directory</Directory>
+			<Name>Chat</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>Email</Category>
+				<And>
+				<Category>Network</Category>
+				<Category>Chat</Category>
+				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Peer to Peer</Name>
-			<Directory>suse-internet-p2p.directory</Directory>
-			<Include>
-				<Category>P2P</Category>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>Dialup</Name>
-			<Directory>suse-internet-dialup.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Network</Category>
 				<Category>Dialup</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Administration</Name>
-			<Directory>suse-administration.directory</Directory>
+			<Name>Email</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-					<Category>Network</Category>
-					<Category>Monitor</Category>
-				</And>
-				<And>
-					<Category>Network</Category>
-					<Category>Settings</Category>
-				</And>
-				<And>
-					<Category>Network</Category>
-					<Category>Security</Category>
+				<Category>Network</Category>
+				<Category>Email</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>IP Telephone</Name>
-			<Directory>suse-internet-telephone.directory</Directory>
+			<Name>Feed</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>Feed</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>FileTransfer</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>FileTransfer</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>HamRadio</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>HamRadio</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>IRCClient</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>IRCClient</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>InstantMessaging</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>InstantMessaging</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Monitor</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>Monitor</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>News</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>News</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>P2P</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>P2P</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>RemoteAccess</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Network</Category>
+				<Category>RemoteAccess</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Telephony</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Network</Category>
 				<Category>Telephony</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Filetransfer</Name>
-			<Directory>suse-internet-filetransfer.directory</Directory>
-			<Include>
-				<Category>FileTransfer</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Ham-Radio</Name>
-			<Directory>suse-internet-hamradio.directory</Directory>
-			<Include>
-				<Category>HamRadio</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Chat</Name>
-			<Directory>suse-internet-chat.directory</Directory>
-			<Include>
-				<Category>IRCClient</Category>
-				<Category>InstantMessaging</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>NewsReader</Name>
-			<Directory>suse-internet-newsreader.directory</Directory>
-			<Include>
-				<Category>News</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Feed</Name>
-			<Directory>suse-internet-news-feed-reader.directory</Directory>
-			<Include>
-				<Or>
-				<Category>Feed</Category>
-				<Category>X-SuSE-RSS-News</Category>
-				</Or>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>WebBrowser</Name>
-			<Directory>suse-internet-webbrowser.directory</Directory>
-			<Include>
-				<Category>WebBrowser</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>WebDevelopment</Name>
-			<Directory>suse-internet-webdevelopment.directory</Directory>
-			<Include>
-				<Category>WebDevelopment</Category>
-			</Include>
-		</Menu>
-	</Menu>
-	<Menu>
-		<Name>Multimedia</Name>
-		<Directory>suse-multimedia.directory</Directory>
-		<Include>
-			<Category>X-SuSE-Core-Multimedia</Category>
-		</Include>
-		<Menu>
-			<Name>More Programs</Name>
+			<Name>VideoConference</Name>
 			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>AudioVideo</Category>
-				<Not>
-				<Category>X-SuSE-Core-Multimedia</Category>
-				<Category>Mixer</Category>
-				<Category>X-SuSE-Jukebox</Category>
-				<Category>DiscBurning</Category>
-				<Category>Audio</Category>
-				<Category>Player</Category>
-				<Category>Database</Category>
-				<Category>Utility</Category>
-				<Category>Music</Category>
-				<Category>Midi</Category>
-				<Category>Sequencer</Category>
-				<Category>Tuner</Category>
-				<Category>TV</Category>
-				<Category>AudioVideoEditing</Category>
-				<Category>Recorder</Category>
-				<Category>X-SuSE-CD</Category>
-				</Not>
+				<Category>Network</Category>
+				<Category>VideoConference</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Mixer</Name>
-			<Directory>suse-multimedia-audiomixer.directory</Directory>
-			<Include>
-				<Category>Mixer</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>AudioVideoEditing</Name>
-			<Directory>suse-multimedia-audiovideoediting.directory</Directory>
-			<Include>
-				<Category>AudioVideoEditing</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>VideoPlayer</Name>
-			<Directory>suse-multimedia-videoplayer.directory</Directory>
+			<Name>WebBrowser</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>AudioVideo</Category>
-				<Category>Player</Category>
-				<Category>Video</Category>
-				<Not><Category>X-SuSE-Jukebox</Category></Not>
+				<Category>Network</Category>
+				<Category>WebBrowser</Category>
 				</And>
 			</Include>
-			<Exclude>
-				<Filename>realplay.desktop</Filename>
-                                <Filename>kde-realplay-kde.desktop</Filename>
-			</Exclude>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Jukebox</Name>
-			<Directory>suse-multimedia-jukebox.directory</Directory>
+			<Name>WebDevelopment</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>AudioVideo</Category>
-				<Category>Player</Category>
-				<Category>X-SuSE-Jukebox</Category>
+				<Category>Network</Category>
+				<Category>WebDevelopment</Category>
 				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>AudioPlayer</Name>
-			<Directory>suse-multimedia-audioplayer.directory</Directory>
-			<Include>
-				<And>
-				<Category>AudioVideo</Category>
-				<Category>Player</Category>
-				<Not><Category>Video</Category></Not>
-				<Not><Category>Jukebox</Category></Not>
-				<Not><Category>X-SuSE-Jukebox</Category></Not>
-				<Not><Category>X-SuSE-CD</Category></Not>
-				</And>
-				<And>
-				<Category>AudioVideo</Category>
-				<Category>Midi</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>AudioVideoRecorder</Name>
-			<Directory>suse-multimedia-audiovideorecorder.directory</Directory>
-			<Include>
-				<And>
-				<Category>Recorder</Category>
-				<Not><Category>X-SuSE-CD</Category></Not>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Sequencer</Name>
-			<Directory>suse-multimedia-sequencer.directory</Directory>
-			<Include>
-				<Category>Sequencer</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Music</Name>
-			<Directory>suse-multimedia-music.directory</Directory>
-			<Include>
-				<And>
-				<Category>AudioVideo</Category>
-				<Category>Music</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Burning</Name>
-			<Directory>suse-multimedia-burning.directory</Directory>
-			<Include>
-				<Category>DiscBurning</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>CD</Name>
-			<Directory>suse-multimedia-cd.directory</Directory>
-			<Include>
-				<And>
-				<Category>Player</Category>
-				<Category>X-SuSE-CD</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>CD Tools</Name>
-			<Directory>suse-multimedia-cd-tools.directory</Directory>
-			<Include>
-				<And>
-				<Category>AudioVideo</Category>
-				<Not><Category>Player</Category></Not>
-				<Category>X-SuSE-CD</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>TV</Name>
-			<Directory>suse-multimedia-tv.directory</Directory>
-			<Include>
-				<Category>Tuner</Category>
-				<Category>TV</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Administration</Name>
-			<Directory>suse-administration.directory</Directory>
-			<Include>
-				<And>
-					<Category>AudioVideo</Category>
-					<Category>Database</Category>
-				</And>
-				<And>
-					<Category>AudioVideo</Category>
-					<Category>Utility</Category>
-				</And>
-			</Include>
-		</Menu>
+		
 	</Menu>
+	
 	<Menu>
 		<Name>Office</Name>
 		<Directory>suse-office.directory</Directory>
@@ -972,271 +1574,753 @@
 				<Not>
 				<Category>X-SuSE-Core-Office</Category>
 				<Category>Calendar</Category>
-				<Category>Presentation</Category>
-				<Category>Spreadsheet</Category>
-				<Category>WordProcessor</Category>
-				<Category>ContactManagement</Category>
-				<Category>Dictionary</Category>
-				<Category>Database</Category>
-				<Category>Email</Category>
-				<Category>ProjectManagement</Category>
-				<Category>Finance</Category>
 				<Category>Chart</Category>
+				<Category>ContactManagement</Category>
+				<Category>Database</Category>
+				<Category>Dictionary</Category>
+				<Category>Email</Category>
+				<Category>Finance</Category>
 				<Category>FlowChart</Category>
-				<Category>PDFViewer</Category>
-				<Category>X-SuSE-PDFViewer</Category>
+				<Category>PDA</Category>
+				<Category>Photography</Category>
+				<Category>Presentation</Category>
+				<Category>ProjectManagement</Category>
+				<Category>Publishing</Category>
+				<Category>Spreadsheet</Category>
+				<Category>TextTools</Category>
 				<Category>Viewer</Category>
-				<Category>X-SuSE-Editor</Category>
-				<Category>X-SuSE-AddressBook</Category>
-				<Category>X-SuSE-Warehouse</Category>
-				<Category>WebDevelopment</Category>
+				<Category>WordProcessor</Category>
 				</Not>
 				</And>
 			</Include>
 		</Menu>
+		
 		<Menu>
 			<Name>Calendar</Name>
-			<Directory>suse-office-calendar.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>Office</Category>
 				<Category>Calendar</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>Chart</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>Chart</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ContactManagement</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>ContactManagement</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>Database</Name>
-			<Directory>suse-office-database.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Office</Category>
 				<Category>Database</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Addressbook</Name>
-			<Directory>suse-office-addressbook.directory</Directory>
+			<Name>Dictionary</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>Office</Category>
-				<Category>ContactManagement</Category>
-				</And>
-				<And>
-				<Category>Office</Category>
-				<Category>X-SuSE-AddressBook</Category>
+				<Category>Dictionary</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>DocumentViewer</Name>
-			<Directory>suse-office-documentviewer.directory</Directory>
+			<Name>Email</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>PDFViewer</Category>
-				<Category>X-SuSE-PDFViewer</Category>
+				<And>
+				<Category>Office</Category>
+				<Category>Email</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Finance</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>Finance</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>FlowChart</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>FlowChart</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>PDA</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>PDA</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Photography</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>Photography</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Presentation</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>Presentation</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ProjectManagement</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>ProjectManagement</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Publishing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>Publishing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Spreadsheet</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>Spreadsheet</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>TextTools</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Office</Category>
+				<Category>TextTools</Category>
+				</And>
+			</Include>
+			
+			<Menu>
+				<Name>Dictionary</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Office</Category>
+					<Category>TextTools</Category>
+					<Category>Dictionary</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Viewer</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
 				<And>
 				<Category>Office</Category>
 				<Category>Viewer</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Warehouse</Name>
-			<Directory>suse-office-warehouse.directory</Directory>
+			<Name>WordProcessor</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>X-SuSE-Warehouse</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>FlowChart</Name>
-			<Directory>suse-office-flowchart.directory</Directory>
-			<Include>
-				<Category>Chart</Category>
-				<Category>FlowChart</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Finance</Name>
-			<Directory>suse-office-finance.directory</Directory>
-			<Include>
-				<Category>Finance</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Presentation</Name>
-			<Directory>suse-office-presentation.directory</Directory>
-			<Include>
-				<Category>Presentation</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>ProjectManagement</Name>
-			<Directory>suse-office-projectmanagement.directory</Directory>
-			<Include>
-				<Category>ProjectManagement</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Spreadsheet</Name>
-			<Directory>suse-office-spreadsheet.directory</Directory>
-			<Include>
-				<Category>Spreadsheet</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Wordprocessor</Name>
-			<Directory>suse-office-wordprocessor.directory</Directory>
-			<Include>
+				<And>
+				<Category>Office</Category>
 				<Category>WordProcessor</Category>
+				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Dictionary</Name>
-			<Directory>suse-office-dictionary.directory</Directory>
-			<Include>
-				<Category>Dictionary</Category>
-			</Include>
-		</Menu>
+		
 	</Menu>
+	
 	<Menu>
-		<Name>Utilities</Name>
-		<Directory>suse-utility.directory</Directory>
+		<Name>Science</Name>
+		<Directory>suse-science.directory</Directory>
 		<Include>
-			<Category>X-SuSE-Core-Utility</Category>
+			<Category>X-SuSE-Core-Science</Category>
 		</Include>
 		<Menu>
 			<Name>More Programs</Name>
 			<Directory>suse-more.directory</Directory>
-				<Include>
+			<Include>
 				<And>
-				<Category>Utility</Category>
+				<Category>Science</Category>
 				<Not>
-				<Category>X-SuSE-Core-Utility</Category>
-				<Category>AudioVideo</Category>
-				<Category>PDA</Category>
-				<Category>TextEditor</Category>
-				<Category>Office</Category>
-				<Category>Accessibility</Category>
-				<Category>Applet</Category>
-				<Category>Settings</Category>
-				<Category>Shell</Category>
-				<Category>FileManager</Category>
-				<Category>Clock</Category>
-				<Category>Telephony</Category>
-				<Category>TerminalEmulator</Category>
-				<Category>Archiving</Category>
-				<Category>Filesystem</Category>
-				<Category>Calculator</Category>
-				<Category>Security</Category>
-				<Category>DesktopSettings</Category>
-				<Category>X-SuSE-CD</Category>
-				<Category>X-SuSE-DesktopUtility</Category>
-				<Category>X-SuSE-Editor</Category>
-				<Category>X-SuSE-SyncUtility</Category>
-				<Category>X-SuSE-WebUtility</Category>
-				<Category>X-SuSE-TimeUtility</Category>
-				<Category>X-SuSE-XMLUtility</Category>
-				<Category>X-SuSE-PrintingUtility</Category>
+				<Category>X-SuSE-Core-Science</Category>
+				<Category>Art</Category>
+				<Category>ArtificialIntelligence</Category>
+				<Category>Astronomy</Category>
+				<Category>Biology</Category>
+				<Category>Chemistry</Category>
+				<Category>ComputerScience</Category>
+				<Category>Construction</Category>
+				<Category>DataVisualization</Category>
+				<Category>Economy</Category>
+				<Category>Electricity</Category>
+				<Category>Engineering</Category>
+				<Category>Geography</Category>
+				<Category>Geology</Category>
+				<Category>Geoscience</Category>
+				<Category>History</Category>
+				<Category>Humanities</Category>
+				<Category>ImageProcessing</Category>
+				<Category>Languages</Category>
+				<Category>Literature</Category>
+				<Category>Maps</Category>
+				<Category>Math</Category>
+				<Category>MedicalSoftware</Category>
+				<Category>NumericalAnalysis</Category>
+				<Category>ParallelComputing</Category>
+				<Category>Physics</Category>
+				<Category>Robotics</Category>
+				<Category>Spirituality</Category>
+				<Category>Sports</Category>
 				</Not>
 				</And>
 			</Include>
 		</Menu>
+		
 		<Menu>
-			<Name>Desktop</Name>
-			<Directory>suse-utility-desktop.directory</Directory>
+			<Name>Art</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>Utility</Category>
-				<Category>Settings</Category>
+				<Category>Science</Category>
+				<Category>Art</Category>
 				</And>
-				<Category>DesktopSettings</Category>
-				<Category>X-SuSE-DesktopUtility</Category>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Texteditor</Name>
-			<Directory>suse-utility-editor.directory</Directory>
+			<Name>ArtificialIntelligence</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>TextEditor</Category>
-				<Category>X-SuSE-Editor</Category>
+				<And>
+				<Category>Science</Category>
+				<Category>ArtificialIntelligence</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Astronomy</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Astronomy</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Biology</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Biology</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Chemistry</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Chemistry</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ComputerScience</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>ComputerScience</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Construction</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Construction</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>DataVisualization</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>DataVisualization</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Economy</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Economy</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Electricity</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Electricity</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Engineering</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Engineering</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Geography</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Geography</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Geology</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Geology</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Geoscience</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Geoscience</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>History</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>History</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Humanities</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Humanities</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ImageProcessing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>ImageProcessing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Languages</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Languages</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Literature</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Literature</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Maps</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Maps</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Math</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Math</Category>
+				</And>
+			</Include>
+			
+			<Menu>
+				<Name>NumericalAnalysis</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Science</Category>
+					<Category>Math</Category>
+					<Category>NumericalAnalysis</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+			<Menu>
+				<Name>ParallelComputing</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Science</Category>
+					<Category>Math</Category>
+					<Category>ParallelComputing</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>MedicalSoftware</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>MedicalSoftware</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>NumericalAnalysis</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>NumericalAnalysis</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>ParallelComputing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>ParallelComputing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Physics</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Physics</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Robotics</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Robotics</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Spirituality</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Spirituality</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Sports</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Science</Category>
+				<Category>Sports</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+	</Menu>
+	
+	<Menu>
+		<Name>Settings</Name>
+		<Directory>suse-settings.directory</Directory>
+		<Include>
+			<Category></Category>
+		</Include>
+		<Menu>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Settings</Category>
+				<Not>
+				<Category></Category>
+				<Category>Accessibility</Category>
+				<Category>DesktopSettings</Category>
+				<Category>HardwareSettings</Category>
+				<Category>PackageManager</Category>
+				<Category>Printing</Category>
+				<Category>Security</Category>
+				</Not>
+				</And>
 			</Include>
 		</Menu>
+		
 		<Menu>
 			<Name>Accessibility</Name>
-			<Directory>suse-utility-accessibility.directory</Directory>
-			<Include>
-				<Category>Accessibility</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Archiving</Name>
-			<Directory>suse-utility-archiving.directory</Directory>
-			<Include>
-				<Category>Archiving</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Telephone</Name>
-			<Directory>suse-telephone.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>Utility</Category>
-				<Category>Telephony</Category>
+				<Category>Settings</Category>
+				<Category>Accessibility</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>Calc</Name>
-			<Directory>suse-utility-calculator.directory</Directory>
-			<Include>
-				<Category>Calculator</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Security</Name>
-			<Directory>suse-system-security.directory</Directory>
+			<Name>DesktopSettings</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
-				<Category>Utility</Category>
+				<Category>Settings</Category>
+				<Category>DesktopSettings</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>HardwareSettings</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Settings</Category>
+				<Category>HardwareSettings</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>PackageManager</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Settings</Category>
+				<Category>PackageManager</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Printing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Settings</Category>
+				<Category>Printing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Security</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Settings</Category>
 				<Category>Security</Category>
 				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Syncing</Name>
-			<Directory>suse-utility-sync.directory</Directory>
-			<Include>
-				<Category>PDA</Category>
-				<Category>X-SuSE-SyncUtility</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Time</Name>
-			<Directory>suse-utility-time.directory</Directory>
-			<Include>
-				<Category>Clock</Category>
-				<Category>X-SuSE-TimeUtility</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>XML Utilities</Name>
-			<Directory>suse-utility-xml.directory</Directory>
-			<Include>
-				<Category>X-SuSE-XMLUtility</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>WebUtility</Name>
-			<Directory>suse-utility-web.directory</Directory>
-			<Include>
-				<Category>X-SuSE-WebUtility</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Printing</Name>
-			<Directory>suse-utility-printing.directory</Directory>
-			<Include>
-				<Category>X-SuSE-PrintingUtility</Category>
-			</Include>
-		</Menu>
+		
 	</Menu>
+	
 	<Menu>
 		<Name>System</Name>
 		<Directory>suse-system.directory</Directory>
@@ -1246,217 +2330,528 @@
 		<Menu>
 			<Name>More Programs</Name>
 			<Directory>suse-more.directory</Directory>
-				<Include>
+			<Include>
 				<And>
 				<Category>System</Category>
 				<Not>
 				<Category>X-SuSE-Core-System</Category>
-				<Category>HardwareSettings</Category>
-				<Category>Emulator</Category>
-				<Category>Monitor</Category>
-				<Category>Screensaver</Category>
-				<Category>Shell</Category>
-				<Category>X-SuSE-Feedback</Category>
-				<Category>TerminalEmulator</Category>
-				<Category>Network</Category>
-				<Category>SystemSetup</Category>
-				<Category>X-SuSE-ControlCenter-Personal</Category>
-				<Category>PackageManager</Category>
-				<Category>Utility</Category>
-				<Category>Applet</Category>
-				<Category>TrayIcon</Category>
-				<Category>Telephony</Category>
 				<Category>Documentation</Category>
-				<Category>Database</Category>
-				<Category>RemoteAccess</Category>
+				<Category>Emulator</Category>
 				<Category>FileManager</Category>
+				<Category>FileTools</Category>
 				<Category>Filesystem</Category>
-				<Category>Archiving</Category>
-				<Category>Accessibility</Category>
-				<Category>X-SuSE-Backup</Category>
-				<Category>X-SuSE-ServiceConfiguration</Category>
-				<Category>X-KDE-Settings-Hardware</Category>
+				<Category>HardwareSettings</Category>
+				<Category>Monitor</Category>
 				<Category>Security</Category>
-				<Category>X-SuSE-YaST</Category>
+				<Category>System</Category>
+				<Category>TerminalEmulator</Category>
 				</Not>
 				</And>
-				</Include>
-			<Exclude>
-				<Filename>gnome-gnome-system-log.desktop</Filename>
-				<Filename>gnome-gdmflexiserver-xnest.desktop</Filename>
-				<Filename>gnome-gdmflexiserver.desktop</Filename>
-				<Filename>gnome-gdmsetup.desktop</Filename>
-				<Filename>gnome-gfloppy.desktop</Filename>
-			</Exclude>
-		</Menu>
-		<Menu>
-			<Name>Backup</Name>
-			<Directory>suse-system-backup.directory</Directory>
-			<Include>
-				<Category>X-SuSE-Backup</Category>
 			</Include>
 		</Menu>
+		
 		<Menu>
 			<Name>Documentation</Name>
-			<Directory>suse-documentation.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
+				<Category>System</Category>
 				<Category>Documentation</Category>
-				<Not><Category>Development</Category></Not>
 				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Feedback</Name>
-			<Directory>suse-system-feedback.directory</Directory>
-			<Include>
-				<Category>X-SuSE-Feedback</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Security</Name>
-			<Directory>suse-system-security.directory</Directory>
-			<Include>
-				<And>
-				<Category>Security</Category>
-				<Not><Category>Utility</Category></Not>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Network</Name>
-			<Directory>suse-system-network.directory</Directory>
-			<Include>
-				<And>
-				<Category>System</Category>
-				<Category>Network</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Telephone</Name>
-			<Directory>suse-telephone.directory</Directory>
-			<Include>
-				<And>
-				<Category>System</Category>
-				<Category>Telephony</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>SystemSetup</Name>
-			<Directory>suse-system-systemsetup.directory</Directory>
-			<Include>
-				<Category>X-KDE-Settings-Hardware</Category>
-				<Category>HardwareSettings</Category>
-				<Category>SystemSetup</Category>
-				<Category>PackageManager</Category>
-				<Category>X-SuSE-ControlCenter-Personal</Category>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Service Configuration</Name>
-			<Directory>suse-system-service-configuration.directory</Directory>
-			<Include>
-				<Category>X-SuSE-ServiceConfiguration</Category>
-				<And>
-				<Category>Database</Category>
-				<Not><Category>Office</Category></Not>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Applet</Name>
-			<Directory>suse-system-applet.directory</Directory>
-			<Include>
-				<Category>Applet</Category>
-				<Category>TrayIcon</Category>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>Emulator</Name>
-			<Directory>suse-system-emulator.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>System</Category>
 				<Category>Emulator</Category>
+				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Filesystem</Name>
-			<Directory>suse-system-filesystem.directory</Directory>
-			<Include>
-				<Category>Filesystem</Category>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>FileManager</Name>
-			<Directory>suse-system-filemanager.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
+				<And>
+				<Category>System</Category>
 				<Category>FileManager</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
+		<Menu>
+			<Name>FileTools</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>System</Category>
+				<Category>FileTools</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Filesystem</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>System</Category>
+				<Category>Filesystem</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>HardwareSettings</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>System</Category>
+				<Category>HardwareSettings</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 		<Menu>
 			<Name>Monitor</Name>
-			<Directory>suse-system-monitor.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
 				<And>
 				<Category>System</Category>
 				<Category>Monitor</Category>
 				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>ScreenSavers</Name>
-			<Directory>suse-system-screensavers.directory</Directory>
-	                <MergeFile>suse-screensavers.menu</MergeFile>
+			<Name>Security</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>Screensaver</Category>
+				<And>
+				<Category>System</Category>
+				<Category>Security</Category>
+				</And>
 			</Include>
+			
 		</Menu>
+		
 		<Menu>
-			<Name>RemoteAccess</Name>
-			<Directory>suse-system-remoteaccess.directory</Directory>
+			<Name>System</Name>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>RemoteAccess</Category>
+				<And>
+				<Category>System</Category>
+				<Category>System</Category>
+				</And>
 			</Include>
+			
 		</Menu>
-		<Menu>
-			<Name>Virtualization</Name>
-			<Directory>suse-system-virtualization.directory</Directory>
-			<Include>
-				<Category>X-SuSE-YaST-Virtualization</Category>
-			</Include>
-		</Menu>
+		
 		<Menu>
 			<Name>TerminalEmulator</Name>
-			<Directory>suse-system-shell.directory</Directory>
+			<Directory>suse-more.directory</Directory>
 			<Include>
-				<Category>Shell</Category>
+				<And>
+				<Category>System</Category>
 				<Category>TerminalEmulator</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+	</Menu>
+	
+	<Menu>
+		<Name>Utility</Name>
+		<Directory>suse-utility.directory</Directory>
+		<Include>
+			<Category>X-SuSE-Core-Utility</Category>
+		</Include>
+		<Menu>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Not>
+				<Category>X-SuSE-Core-Utility</Category>
+				<Category>Accessibility</Category>
+				<Category>Applet</Category>
+				<Category>Archiving</Category>
+				<Category>Calculator</Category>
+				<Category>Clock</Category>
+				<Category>Compression</Category>
+				<Category>FileTools</Category>
+				<Category>FileManager</Category>
+				<Category>Filesystem</Category>
+				<Category>Printing</Category>
+				<Category>Maps</Category>
+				<Category>Security</Category>
+				<Category>Settings</Category>
+				<Category>Spirituality</Category>
+				<Category>TelephonyTools</Category>
+				<Category>TextEditor</Category>
+				<Category>X-SuSE-DesktopUtility</Category>
+				<Category>X-SuSE-SyncUtility</Category>
+				<Category>X-SuSE-TimeUtility</Category>
+				<Category>X-SuSE-WebUtility</Category>
+				</Not>
+				</And>
 			</Include>
 		</Menu>
+		
+		<Menu>
+			<Name>Accessibility</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Accessibility</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Applet</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Applet</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Archiving</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Archiving</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Calculator</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Calculator</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Clock</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Clock</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Compression</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Compression</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>FileTools</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>FileTools</Category>
+				</And>
+			</Include>
+			
+			<Menu>
+				<Name>FileManager</Name>
+				<Directory>suse-development-design.directory</Directory>
+				<Include>
+					<And>
+					<Category>Utility</Category>
+					<Category>FileTools</Category>
+					<Category>FileManager</Category>
+					</And>
+				</Include>
+			</Menu>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>FileManager</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>FileManager</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Filesystem</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Filesystem</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Printing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Printing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Maps</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Maps</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Security</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Security</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Settings</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Settings</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Spirituality</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>Spirituality</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>TelephonyTools</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>TelephonyTools</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>TextEditor</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>TextEditor</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>X-SuSE-DesktopUtility</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>X-SuSE-DesktopUtility</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>X-SuSE-SyncUtility</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>X-SuSE-SyncUtility</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>X-SuSE-TimeUtility</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>X-SuSE-TimeUtility</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>X-SuSE-WebUtility</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Utility</Category>
+				<Category>X-SuSE-WebUtility</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
 	</Menu>
-        <!-- The following menus are hidden by default -->
+	
+	<Menu>
+		<Name>Video</Name>
+		<Directory>suse-multimedia.directory</Directory>
+		<Include>
+			<Category>X-SuSE-Core-Multimedia</Category>
+		</Include>
+		<Menu>
+			<Name>More Programs</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Video</Category>
+				<Not>
+				<Category>X-SuSE-Core-Multimedia</Category>
+				<Category>AudioVideoEditing</Category>
+				<Category>Player</Category>
+				<Category>Recorder</Category>
+				<Category>TV</Category>
+				</Not>
+				</And>
+			</Include>
+		</Menu>
+		
+		<Menu>
+			<Name>AudioVideoEditing</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Video</Category>
+				<Category>AudioVideoEditing</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Player</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Video</Category>
+				<Category>Player</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>Recorder</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Video</Category>
+				<Category>Recorder</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+		<Menu>
+			<Name>TV</Name>
+			<Directory>suse-more.directory</Directory>
+			<Include>
+				<And>
+				<Category>Video</Category>
+				<Category>TV</Category>
+				</And>
+			</Include>
+			
+		</Menu>
+		
+	</Menu>
+	
 	<Menu>
 		<Name>Settings</Name>
 		<Directory>suse-settings.directory</Directory>
 		<Include>
 			<Category>X-SuSE-Core-Configuration</Category>
 		</Include>
-                <MergeFile>kde-settings.menu</MergeFile>
+		<MergeFile>kde-settings.menu</MergeFile>
 	</Menu>
 	<Menu>
 		<Name>YaST</Name>
 		<Directory>suse-yast.directory</Directory>
-                <MergeFile>yast-settings.menu</MergeFile>
+		<MergeFile>yast-settings.menu</MergeFile>
 	</Menu>
-        <Move>
-           <Old>YaST</Old><New>Settings/YaST</New>
-        </Move>
-	<Menu>
-		<Name>KDE 3 Settings</Name>
-		<Directory>Hidden.directory</Directory>
-	</Menu>
+
 	<DefaultMergeDirs/>
-	<MergeFile>applications-kmenuedit.menu</MergeFile>
-        <MergeFile>custom.menu</MergeFile>
+	<MergeFile>custom.menu</MergeFile>
 </Menu>
