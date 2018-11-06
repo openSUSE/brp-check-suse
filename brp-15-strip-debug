@@ -29,7 +29,7 @@ done < <(
 	-prune -o \
 	-type f \( -perm /0111 -o -name "*.so*" \) \
 	-exec file {} + | \
-    sed -n -e 's/^\(.*\):[ ]*ELF.*, not stripped/\1/p'
+    sed -n -e 's/^\(.*\):[ ]*ELF.*, not stripped.*$/\1/p'
 )
 
 # Don't strip debuginfo from static libs, but compiler-generated local symbols
