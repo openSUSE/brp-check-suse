@@ -1,0 +1,14 @@
+#!/bin/bash
+# If using normal root, avoid changing anything.
+if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
+	echo "RPM_BUILD_ROOT is not set or set to / : skipping ar normalization"
+	exit 0
+fi
+if [ -z "$SOURCE_DATE_EPOCH" ] ; then
+	echo "SOURCE_DATE_EPOCH is not set: skipping ar normalization"
+	exit 0
+fi
+
+while read f; do
+	! file "$f" | grep -q "ar archive" || objcopy -D "$f" || true
+done < <(find "$RPM_BUILD_ROOT" -type f -name "*.a" -print)
