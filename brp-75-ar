@@ -8,6 +8,10 @@ if [ -z "$SOURCE_DATE_EPOCH" ] ; then
 	echo "SOURCE_DATE_EPOCH is not set: skipping ar normalization"
 	exit 0
 fi
+if [ "$NO_BRP_AR" = "true" ] ; then
+	echo "NO_BRP_AR is set: skipping ar"
+	exit 0
+fi
 
 while read f; do
 	! file "$f" | grep -q "ar archive" || objcopy -D "$f" || true
