@@ -166,42 +166,39 @@
 			<Include>
 				<And>
 					<Category>Science</Category>
-					<Or>
+					<Not>
+						<Category>X-SuSE-Core-Science</Category>
 						<Category>Art</Category>
-						<Category>Artificial Intelligence</Category>
+						<Category>ArtificialIntelligence</Category>
+						<Category>Astronomy</Category>
 						<Category>Biology</Category>
-						<Category>Construction</Category>
+						<Category>Chemistry</Category>
 						<Category>ComputerScience</Category>
+						<Category>Construction</Category>
+						<Category>DataVisualization</Category>
 						<Category>Economy</Category>
+						<Category>Electricity</Category>
+						<Category>Engineering</Category>
+						<Category>Geography</Category>
 						<Category>Geology</Category>
 						<Category>Geoscience</Category>
 						<Category>History</Category>
 						<Category>Humanities</Category>
 						<Category>ImageProcessing</Category>
+						<Category>Languages</Category>
 						<Category>Literature</Category>
 						<Category>Maps</Category>
-						<Category>MedicalSoftware</Category>
-						<Category>Physics</Category>
-						<Category>Robotics</Category>
-						<Category>Sports</Category>
-						<Category>Electronics</Category>
-						<Category>Engineering</Category>
-						<Category>Electricity</Category>
-						<Category>Construction</Category>
-					</Or>
-					<Not>
-						<Category>X-SuSE-Core-Science</Category>
-						<Category>Astronomy</Category>
-						<Category>Chemistry</Category>
-						<Category>DataVisualization</Category>
-						<Category>Geography</Category>
 						<Category>Math</Category>
+						<Category>MedicalSoftware</Category>
 						<Category>NumericalAnalysis</Category>
 						<Category>ParallelComputing</Category>
-						<Category>Languages</Category>
+						<Category>Physics</Category>
+						<Category>Robotics</Category>
 						<Category>Spirituality</Category>
+						<Category>Sports</Category>
 						<Category>X-KDE-Edu-Teaching</Category>
 						<Category>X-KDE-Edu-Language</Category>
+						<Category>Language</Category>
 					</Not>
 				</And>
 			</Include>
@@ -212,9 +209,12 @@
 			<Include>
 				<And>
 					<Category>Science</Category>
-					<Category>Languages</Category>
+					<Or>
+						<Category>Languages</Category>
+						<Category>Language</Category>
+						<Category>X-KDE-Edu-Language</Category>
+					</Or>
 				</And>
-				<Category>X-KDE-Edu-Language</Category>
 			</Include>
 		</Menu>
 		<Menu>
@@ -224,21 +224,42 @@
 				<And>
 					<Category>Science</Category>
 					<Or>
-						<Category>DataVisualization</Category>
 						<Category>Math</Category>
 						<Category>NumericalAnalysis</Category>
+					</Or>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Computer Science</Name>
+			<Directory>suse-science-computerscience.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Or>
+						<Category>ComputerScience</Category>
 						<Category>ParallelComputing</Category>
 					</Or>
 				</And>
 			</Include>
 		</Menu>
 		<Menu>
-			<Name>Chemistry</Name>
-			<Directory>suse-science-chemical.directory</Directory>
+			<Name>Art</Name>
+			<Directory>suse-science-art.directory</Directory>
 			<Include>
 				<And>
 					<Category>Science</Category>
-					<Category>Chemistry</Category>
+					<Category>Art</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Artificial Intelligence</Name>
+			<Directory>suse-science-artificialintelligence.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>ArtificialIntelligence</Category>
 				</And>
 			</Include>
 		</Menu>
@@ -253,12 +274,212 @@
 			</Include>
 		</Menu>
 		<Menu>
+			<Name>Biology</Name>
+			<Directory>suse-science-biology.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Biology</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Chemistry</Name>
+			<Directory>suse-science-chemistry.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Chemistry</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Construction</Name>
+			<Directory>suse-science-construction.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Construction</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>DataVisualization</Name>
+			<Directory>suse-science-datavisualization.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>DataVisualization</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Economy</Name>
+			<Directory>suse-science-economy.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Economy</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Electricity</Name>
+			<Directory>suse-science-electricity.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Electricity</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Engineering</Name>
+			<Directory>suse-science-engineering.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Engineering</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
 			<Name>Geography</Name>
 			<Directory>suse-science-geography.directory</Directory>
 			<Include>
 				<And>
 					<Category>Science</Category>
 					<Category>Geography</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Geology</Name>
+			<Directory>suse-science-geology.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Geology</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Geoscience</Name>
+			<Directory>suse-science-geoscience.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Geoscience</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>History</Name>
+			<Directory>suse-science-history.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>History</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Humanities</Name>
+			<Directory>suse-science-humanities.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Humanities</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>ImageProcessing</Name>
+			<Directory>suse-science-imageprocessing.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>ImageProcessing</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Literature</Name>
+			<Directory>suse-science-literature.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Literature</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Maps</Name>
+			<Directory>suse-science-maps.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Maps</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Math</Name>
+			<Directory>suse-science-math.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Math</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>MedicalSoftware</Name>
+			<Directory>suse-science-medicalsoftware.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>MedicalSoftware</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Physics</Name>
+			<Directory>suse-science-physics.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Physics</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Robotics</Name>
+			<Directory>suse-science-robotics.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Robotics</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Spirituality</Name>
+			<Directory>suse-science-spirituality.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Spirituality</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Sports</Name>
+			<Directory>suse-science-sports.directory</Directory>
+			<Include>
+				<And>
+					<Category>Science</Category>
+					<Category>Sports</Category>
 				</And>
 			</Include>
 		</Menu>
@@ -275,43 +496,41 @@
 			<Include>
 				<And>
 					<Category>Education</Category>
-					<Or>
+					<Not>
+						<Category>X-SuSE-Core-Education</Category>
+						<Category>Art</Category>
 						<Category>ArtificialIntelligence</Category>
-						<Category>ComputerScience</Category>
+						<Category>Astronomy</Category>
 						<Category>Biology</Category>
+						<Category>Chemistry</Category>
+						<Category>ComputerScience</Category>
+						<Category>Construction</Category>
+						<Category>DataVisualization</Category>
 						<Category>Economy</Category>
-						<Category>Electronics</Category>
+						<Category>Electricity</Category>
+						<Category>Engineering</Category>
+						<Category>Geography</Category>
 						<Category>Geology</Category>
 						<Category>Geoscience</Category>
 						<Category>History</Category>
 						<Category>Humanities</Category>
 						<Category>ImageProcessing</Category>
+						<Category>Languages</Category>
 						<Category>Literature</Category>
 						<Category>Maps</Category>
+						<Category>Math</Category>
 						<Category>MedicalSoftware</Category>
+						<Category>Music</Category>
+						<Category>NumericalAnalysis</Category>
+						<Category>ParallelComputing</Category>
 						<Category>Physics</Category>
 						<Category>Robotics</Category>
 						<Category>Spirituality</Category>
 						<Category>Sports</Category>
-					</Or>
-					<Not>
-						<Category>X-SuSE-Core-Education</Category>
-						<Category>Astronomy</Category>
-						<Category>Chemistry</Category>
-						<Category>DataVisualization</Category>
-						<Category>Geography</Category>
-						<Category>Math</Category>
-						<Category>NumericalAnalysis</Category>
-						<Category>ParallelComputing</Category>
-						<Category>Languages</Category>
-						<Category>Engineering</Category>
-						<Category>Electricity</Category>
-						<Category>Construction</Category>
-						<Category>Music</Category>
 						<Category>Teaching</Category>
-						<Category>Art</Category>
 						<Category>X-KDE-Edu-Teaching</Category>
 						<Category>X-KDE-Edu-Language</Category>
+						<Category>Language</Category>
 					</Not>
 				</And>
 			</Include>
@@ -324,6 +543,7 @@
 					<Category>Education</Category>
 					<Or>
 						<Category>Languages</Category>
+						<Category>Language</Category>
 						<Category>X-KDE-Edu-Language</Category>
 					</Or>
 				</And>
@@ -336,44 +556,21 @@
 				<And>
 					<Category>Education</Category>
 					<Or>
-						<Category>DataVisualization</Category>
 						<Category>Math</Category>
 						<Category>NumericalAnalysis</Category>
-						<Category>ParallelComputing</Category>
 					</Or>
 				</And>
 			</Include>
 		</Menu>
 		<Menu>
-			<Name>Chemistry</Name>
-			<Directory>suse-education-chemical.directory</Directory>
-			<Include>
-				<And>
-					<Category>Education</Category>
-					<Category>Chemistry</Category>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Music</Name>
-			<Directory>suse-education-music.directory</Directory>
-			<Include>
-				<And>
-					<Category>Education</Category>
-					<Category>Music</Category>
-					<Not><Category>AudioVideo</Category></Not>
-				</And>
-			</Include>
-		</Menu>
-		<Menu>
-			<Name>Teaching</Name>
-			<Directory>suse-education-teaching.directory</Directory>
+			<Name>Computer Science</Name>
+			<Directory>suse-education-computerscience.directory</Directory>
 			<Include>
 				<And>
 					<Category>Education</Category>
 					<Or>
-						<Category>X-KDE-Edu-Teaching</Category>
-						<Category>Teaching</Category>
+						<Category>ComputerScience</Category>
+						<Category>ParallelComputing</Category>
 					</Or>
 				</And>
 			</Include>
@@ -389,12 +586,102 @@
 			</Include>
 		</Menu>
 		<Menu>
+			<Name>ArtificialIntelligence</Name>
+			<Directory>suse-education-artificialintelligence.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>ArtificialIntelligence</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
 			<Name>Astronomy</Name>
 			<Directory>suse-education-astronomy.directory</Directory>
 			<Include>
 				<And>
 					<Category>Education</Category>
 					<Category>Astronomy</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Biology</Name>
+			<Directory>suse-education-biology.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Biology</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Chemistry</Name>
+			<Directory>suse-education-chemistry.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Chemistry</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>ComputerScience</Name>
+			<Directory>suse-education-computerscience.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>ComputerScience</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Construction</Name>
+			<Directory>suse-education-construction.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Construction</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>DataVisualization</Name>
+			<Directory>suse-education-datavisualization.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>DataVisualization</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Economy</Name>
+			<Directory>suse-education-economy.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Economy</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Electricity</Name>
+			<Directory>suse-education-electricity.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Electricity</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Engineering</Name>
+			<Directory>suse-education-engineering.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Engineering</Category>
 				</And>
 			</Include>
 		</Menu>
@@ -409,16 +696,142 @@
 			</Include>
 		</Menu>
 		<Menu>
-			<Name>Construction</Name>
-			<Directory>suse-education-construction.directory</Directory>
+			<Name>Geology</Name>
+			<Directory>suse-education-geology.directory</Directory>
 			<Include>
 				<And>
 					<Category>Education</Category>
-					<Or>
-						<Category>Electricity</Category>
-						<Category>Engineering</Category>
-						<Category>Construction</Category>
-					</Or>
+					<Category>Geology</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Geoscience</Name>
+			<Directory>suse-education-geoscience.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Geoscience</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>History</Name>
+			<Directory>suse-education-history.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>History</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Humanities</Name>
+			<Directory>suse-education-humanities.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Humanities</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>ImageProcessing</Name>
+			<Directory>suse-education-imageprocessing.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>ImageProcessing</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Literature</Name>
+			<Directory>suse-education-literature.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Literature</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Maps</Name>
+			<Directory>suse-education-maps.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Maps</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Math</Name>
+			<Directory>suse-education-math.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Math</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>MedicalSoftware</Name>
+			<Directory>suse-education-medicalsoftware.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>MedicalSoftware</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Music</Name>
+			<Directory>suse-education-music.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Music</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Physics</Name>
+			<Directory>suse-education-physics.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Physics</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Robotics</Name>
+			<Directory>suse-education-robotics.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Robotics</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Spirituality</Name>
+			<Directory>suse-education-spirituality.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Spirituality</Category>
+				</And>
+			</Include>
+		</Menu>
+		<Menu>
+			<Name>Sports</Name>
+			<Directory>suse-education-sports.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Category>Sports</Category>
 				</And>
 			</Include>
 		</Menu>
