@@ -37,7 +37,7 @@ while read f; do
 	case $(file "$f") in
 	    *"current ar"*|*ELF*", not stripped"*)
 		chmod u+w "$f" || :
-		strip -p --discard-locals -R .comment -R .note -R .gnu.lto_* "$f" || :
+		strip -p --discard-locals -R .comment -R .note -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 "$f" || :
 		;;
 	    *)
 		echo "WARNING: Strange looking archive $(file $f)"
