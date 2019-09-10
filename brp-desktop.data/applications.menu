@@ -841,8 +841,10 @@
 			<Include>
 				<And>
 					<Category>Education</Category>
-					<Category>Teaching</Category>
-					<Category>X-KDE-Edu-Teaching</Category>
+					<Or>
+						<Category>Teaching</Category>
+						<Category>X-KDE-Edu-Teaching</Category>
+					</Or>
 				</And>
 			</Include>
 		</Menu>
