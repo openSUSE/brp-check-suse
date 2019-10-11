@@ -835,6 +835,19 @@
 				</And>
 			</Include>
 		</Menu>
+		<Menu>
+			<Name>Teaching</Name>
+			<Directory>suse-education-teaching.directory</Directory>
+			<Include>
+				<And>
+					<Category>Education</Category>
+					<Or>
+						<Category>Teaching</Category>
+						<Category>X-KDE-Edu-Teaching</Category>
+					</Or>
+				</And>
+			</Include>
+		</Menu>
 	</Menu>
 	<Menu>
 		<Name>Games</Name>
