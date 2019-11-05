@@ -44,4 +44,4 @@ while read f; do
 		continue
 		;;
 	esac
-done < <(find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" -type f -name "*.a" -print)
+done < <(find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" -type f -name "*.[ao]" -print)
