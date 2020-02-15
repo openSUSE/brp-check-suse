@@ -31,7 +31,7 @@ sed -n -e 's/^\(.*\):[ ]*ELF.*, not stripped.*$/\1/p' |  while read f; do
 done
 
 # Don't strip debuginfo from static libs, but compiler-generated local symbols
-find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" -type f -name "*.a" -print | while read f; do
+find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" -type f -name "*.[ao]" -print | while read f; do
 	case $(file "$f") in
 	    *"current ar"*|*ELF*", not stripped"*)
 		chmod u+w "$f" || :
