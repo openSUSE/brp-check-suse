@@ -31,39 +31,41 @@ had_errors=0
 find . -type l -printf '%P|%l\n' | brp-symlink.prg | while IFS="|" read link link_orig link_dest link_absolut
 do
     if test "$link" = "$link_dest"; then
-      echo "ERROR: $link points to itself (as $orig_link_dest)"
-      exit 1
+        echo "ERROR: $link points to itself (as $orig_link_dest)"
+        exit 1
     fi
 
     # black list
     case "$link,$link_dest" in
         *,/etc/alternatives/*) # white list alternatives
-             ;;
-      	*,*share/automake-*)
-	           echo "ERROR: link target $link points into automake directory"
-	     			 echo " You might want to add a -c to the automake call (or just"
-	     			 echo " skip the files from packaging)"
-	     			 exit 1
-	           ;;
-      	*,/opt/kde3/share/doc*/HTML/*/common) # white listed for not existant
-	           ;;
-	      *,/usr/share/doc/kde/HTML/*/common) # white listed for not existant
-	           ;;
-	      *,/proc/*) # links pointing into /proc file system
-	           ;;
-	      *)
-	  		   if test ! -L ./"$link_absolut" && test ! -e "$link_absolut" && test ! -e ./"$link_absolut"; then
-	    	 		  echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
-	    			  echo "  $link -> $link_orig"
-	    			  echo "Add the package providing the target to BuildRequires and Requires"
-	    			  test "$NO_BRP_STALE_LINK_ERROR" != "yes" && had_errors=1
-	        fi
-	        ;;
+        ;;
+        *,*share/automake-*)
+            echo "ERROR: link target $link points into automake directory"
+            echo " You might want to add a -c to the automake call (or just"
+            echo " skip the files from packaging)"
+            exit 1
+            ;;
+        *,/opt/kde3/share/doc*/HTML/*/common) # white listed for not existant
+            ;;
+        *,/usr/share/doc/kde/HTML/*/common) # white listed for not existant
+            ;;
+        *,/proc/*) # links pointing into /proc file system
+            ;;
+        *)
+            if test ! -L ./"$link_absolut" && test ! -e "$link_absolut" && test ! -e ./"$link_absolut"; then
+                echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
+                echo "  $link -> $link_orig"
+                echo "Add the package providing the target to BuildRequires and Requires"
+                test "$NO_BRP_STALE_LINK_ERROR" != "yes" && had_errors=1
+            fi
+            ;;
     esac
 
     if [ "$link_orig" != "$link_dest" ]; then
-			  echo "INFO: relinking $link -> $link_dest (was $link_orig)"
-	      ln -sf "$link_dest" ./"$link"
+        echo "INFO: relinking $link -> $link_dest (was $link_orig)"
+        # we need to remove the link first because it may point to a directory
+        # and then symantic changes
+        rm ./"$link" && ln -s "$link_dest" ./"$link"
     fi
 done
 
