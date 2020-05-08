@@ -51,6 +51,10 @@ do
             ;;
         *,/proc/*) # links pointing into /proc file system
             ;;
+        *,/dev/*) # links pointing into /dev file system
+            ;;
+        *,/sys/*) # links pointing into /sys file system
+            ;;
         *)
             if test ! -L ./"$link_absolut" && test ! -e "$link_absolut" && test ! -e ./"$link_absolut"; then
                 echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
