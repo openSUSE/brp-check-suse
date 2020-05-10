@@ -35,10 +35,9 @@ do
         exit 1
     fi
 
-    # black list
-    case "$link,$link_dest" in
+    case "$link,$link_absolut" in
         *,/etc/alternatives/*) # white list alternatives
-        ;;
+            ;;
         *,*share/automake-*)
             echo "ERROR: link target $link points into automake directory"
             echo " You might want to add a -c to the automake call (or just"
@@ -49,11 +48,8 @@ do
             ;;
         *,/usr/share/doc/kde/HTML/*/common) # white listed for not existant
             ;;
-        *,/proc/*) # links pointing into /proc file system
-            ;;
-        *,/dev/*) # links pointing into /dev file system
-            ;;
-        *,/sys/*) # links pointing into /sys file system
+        *,/proc/*|*,/dev/*|*,/sys/*) # links pointing into kernel file system should be absolute
+            link_dest=$link_absolut
             ;;
         *)
             if test ! -L ./"$link_absolut" && test ! -e "$link_absolut" && test ! -e ./"$link_absolut"; then
