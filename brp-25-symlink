@@ -36,7 +36,8 @@ do
     fi
 
     case "$link,$link_absolut" in
-        *,/etc/alternatives/*) # white list alternatives
+        *,/etc/alternatives/*) # update alternative links are special
+            link_dest=$link_absolut
             ;;
         *,*share/automake-*)
             echo "ERROR: link target $link points into automake directory"
