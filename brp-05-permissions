@@ -4,6 +4,11 @@ if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
 	exit 0
 fi
 
+if [ "$NO_BRP_PERMISSIONS" = "true" ] ; then
+        echo "NO_BRP_PERMISSIONS is set: skipping chkstat call"
+        exit 0
+fi
+
 # used to also run on / if uid == 0 but that's really broken
 if [ -e /etc/permissions -a -x /usr/bin/chkstat ]; then
 	/usr/bin/chkstat \

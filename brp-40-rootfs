@@ -9,6 +9,11 @@ if [ -z "$RPM_BUILD_ROOT" ]; then
         exit 0
 fi
 
+if [ "$NO_BRP_ROOTFS" = "true" ] ; then
+        echo "NO_BRP_ROOTFS is set: skipping search for /opt-linked binaries"
+        exit 0
+fi
+
 OUT_OF_FS=0
 
 if {
