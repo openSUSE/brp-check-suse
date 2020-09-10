@@ -1,13 +1,8 @@
 #include <iostream>
+#include <iterator>
+#include <sstream>
 #include <string>
-
-#if defined(__cplusplus) && __cplusplus >= 201703L && defined(__has_include) && __has_include(<filesystem>)
-#include <filesystem>
-namespace fs = std::filesystem;
-#else
-#include <ghc/filesystem.hpp>
-namespace fs = ghc::filesystem;
-#endif
+#include <vector>
 
 // synopsis: read from stdin lines per link
 // IFS=| link link_dest
@@ -18,25 +13,106 @@ namespace fs = ghc::filesystem;
 // NOTE:
 // the actual file system content is of no concern here
 
-void check_link(const std::string &link, const std::string &link_dest) {
-   fs::path link_path(link);
-   fs::path link_dest_path = link_path.parent_path().append(link_dest);
-   fs::path link_dest_abs(link_dest_path.lexically_normal().string());
-   std::cout << link << "|"
-        << link_dest << "|"
-        << link_dest_abs.lexically_relative(link_path.parent_path()).string() << "|"
-        << link_dest_abs.string() << std::endl;
+using namespace std;
+
+string append(const string& p1, const string& p2)
+{
+    char sep = '/';
+    if (p2[0] == sep)
+        return p2;
+
+    string tmp = p1;
+
+    size_t len = p1.length();
+    while (len && p1[len] != sep)
+        len--;
+    tmp.resize(len + 1);
+
+    return (tmp + p2);
 }
 
-void work_line(const std::string &line) {
-    size_t delim = line.find('|');
-    check_link("/" + line.substr(0, delim), line.substr(delim+1));
+vector<string> split_paths(string path)
+{
+    size_t pos = 0;
+    string token;
+    vector<string> paths;
+    while ((pos = path.find("/")) != string::npos) {
+        token = path.substr(0, pos);
+        if (token == "..") {
+            paths.pop_back();
+        } else {
+            paths.push_back(token);
+        }
+        path.erase(0, pos + 1);
+    }
+    paths.push_back(path);
+    return paths;
 }
 
-int main(int argc, char **argv) {
-    for (std::string line; std::getline(std::cin, line);) {
-      work_line(line);
+string merge_paths(vector<string> paths)
+{
+    string path;
+    for (const auto& s : paths) {
+        if (s.empty())
+            continue;
+        if (!path.empty())
+            path += "/";
+        path += s;
     }
 
-  return 0;
+    return path;
+}
+
+string normalize(string path)
+{
+    vector<string> paths = split_paths(path);
+    return "/" + merge_paths(paths);
+}
+
+string relative(const string& p1, const string& p2)
+{
+    vector<string> paths1 = split_paths(p1);
+    paths1.pop_back();
+    vector<string> paths2 = split_paths(p2);
+    vector<string> paths;
+    vector<string>::const_iterator it1 = paths1.begin();
+    vector<string>::const_iterator it2 = paths2.begin();
+    // first remove the common parts
+    while (it1 != paths1.end() && *it1 == *it2) {
+        it1++;
+        it2++;
+    }
+    for (; it1 != paths1.end(); ++it1) {
+        paths.push_back("..");
+    }
+    for (; it2 != paths2.end(); ++it2) {
+        paths.push_back(*it2);
+    }
+
+    return merge_paths(paths);
+}
+
+void check_link(const string& link, const string& link_dest)
+{
+    string link_dest_path = append(link, link_dest);
+    string link_dest_abs = normalize(link_dest_path);
+    cout << link << "|"
+         << link_dest << "|"
+         << relative(normalize(link), link_dest_abs) << "|"
+         << link_dest_abs << endl;
+}
+
+void work_line(const string& line)
+{
+    size_t delim = line.find('|');
+    check_link("/" + line.substr(0, delim), line.substr(delim + 1));
+}
+
+int main(int argc, char** argv)
+{
+    for (string line; getline(cin, line);) {
+        work_line(line);
+    }
+
+    return 0;
 }
