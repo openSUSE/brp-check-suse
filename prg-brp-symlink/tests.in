@@ -1372,3 +1372,4 @@ usr/share/man/ru/man1/rview.1.gz|vim.1.gz
 bin/vi|/usr/bin/vim
 bin/vim|/usr/bin/vim
 bin/ex|/usr/bin/vim
+bin/keyctl|//usr/bin/keyctl
