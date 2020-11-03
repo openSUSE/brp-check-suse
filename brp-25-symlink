@@ -28,7 +28,7 @@ cd $RPM_BUILD_ROOT
 
 had_errors=0
 
-find . -type l -printf '%P|%l\n' | sort | brp-symlink.prg | while IFS="|" read link link_orig link_dest link_absolut
+while IFS="|" read link link_orig link_dest link_absolut
 do
     if test "$link" = "$link_dest"; then
         echo "ERROR: $link points to itself (as $orig_link_dest)"
@@ -68,7 +68,7 @@ do
         # and then semantic changes
         rm ./"$link" && ln -s "$link_dest" ./"$link"
     fi
-done
+done < <(find . -type l -printf '%P|%l\n' | sort | brp-symlink.prg)
 
 if test "$had_errors" = 1; then
     exit 1
