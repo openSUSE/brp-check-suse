@@ -1373,3 +1373,4 @@ bin/vi|/usr/bin/vim
 bin/vim|/usr/bin/vim
 bin/ex|/usr/bin/vim
 bin/keyctl|//usr/bin/keyctl
+a/b/c/d/link|.././../O

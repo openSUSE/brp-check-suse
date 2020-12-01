@@ -40,7 +40,7 @@ vector<string> split_paths(string path)
         token = path.substr(0, pos);
         if (token == "..") {
             paths.pop_back();
-        } else {
+        } else if (token != ".") {
             paths.push_back(token);
         }
         path.erase(0, pos + 1);
