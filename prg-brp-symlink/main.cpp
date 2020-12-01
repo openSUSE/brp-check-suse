@@ -31,21 +31,18 @@ string append(const string& p1, const string& p2)
     return (tmp + p2);
 }
 
-vector<string> split_paths(string path)
+vector<string> split_paths(const string &path)
 {
-    size_t pos = 0;
     string token;
     vector<string> paths;
-    while ((pos = path.find("/")) != string::npos) {
-        token = path.substr(0, pos);
+    stringstream ss(path);
+    while (getline(ss, token, '/')) {
         if (token == "..") {
             paths.pop_back();
-        } else if (token != ".") {
+        } else if (token != "." || ss.eof()) {
             paths.push_back(token);
         }
-        path.erase(0, pos + 1);
     }
-    paths.push_back(path);
     return paths;
 }
 
