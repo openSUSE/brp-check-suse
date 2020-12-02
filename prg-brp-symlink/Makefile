@@ -1,7 +1,10 @@
+CXXFLAGS=-O2 -Wall
+CXX=g++
+
 all: brp-symlink
 
 brp-symlink: main.cpp
-	g++ -I. -std=c++17 main.cpp -o brp-symlink
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 check: brp-symlink
 	./brp-symlink < tests.in > tests.new
