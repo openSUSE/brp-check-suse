@@ -32,32 +32,42 @@ while IFS="|" read link link_orig link_dest link_absolut
 do
     if test "$link" = "$link_dest"; then
         echo "ERROR: $link points to itself (as $orig_link_dest)"
-        exit 1
+        had_errors=1
+        continue
     fi
 
-    case "$link,$link_absolut" in
-        *,/etc/alternatives/*) # update alternative links are special
+    case "$link_absolut" in
+        /etc/alternatives/*) # update alternative links are special
             link_dest=$link_absolut
             ;;
-        *,*share/automake-*)
+        /opt/kde3/share/doc*/HTML/*/common) # white listed for not existant
+            ;;
+        /usr/share/doc/kde/HTML/*/common) # white listed for not existant
+            ;;
+        /proc/*|/dev/*|/sys/*) # links pointing into kernel file system should be absolute
+            link_dest=$link_absolut
+            ;;
+        ${RPM_BUILD_ROOT}*)
+            echo "ERROR: Link $link -> $link_orig points inside build root!"
+            had_errors=1
+            continue
+            ;;
+        *share/automake-*)
             echo "ERROR: link target $link points into automake directory"
             echo " You might want to add a -c to the automake call (or just"
             echo " skip the files from packaging)"
-            exit 1
-            ;;
-        *,/opt/kde3/share/doc*/HTML/*/common) # white listed for not existant
-            ;;
-        *,/usr/share/doc/kde/HTML/*/common) # white listed for not existant
-            ;;
-        *,/proc/*|*,/dev/*|*,/sys/*) # links pointing into kernel file system should be absolute
-            link_dest=$link_absolut
+            had_errors=1
+            continue
             ;;
         *)
             if test ! -L ./"$link_absolut" && test ! -e "$link_absolut" && test ! -e ./"$link_absolut"; then
                 echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
                 echo "  $link -> $link_orig"
                 echo "Add the package providing the target to BuildRequires and Requires"
-                test "$NO_BRP_STALE_LINK_ERROR" != "yes" && had_errors=1
+                if [ "$NO_BRP_STALE_LINK_ERROR" != "yes" ]; then
+                    had_errors=1
+                    continue
+                fi
             fi
             ;;
     esac
