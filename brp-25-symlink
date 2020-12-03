@@ -36,22 +36,22 @@ do
         continue
     fi
 
-    case "$link,$link_absolut" in
-        *,/etc/alternatives/*) # update alternative links are special
+    case "$link_absolut" in
+        /etc/alternatives/*) # update alternative links are special
             link_dest=$link_absolut
             ;;
-        *,*share/automake-*)
+        *share/automake-*)
             echo "ERROR: link target $link points into automake directory"
             echo " You might want to add a -c to the automake call (or just"
             echo " skip the files from packaging)"
             had_errors=1
             continue
             ;;
-        *,/opt/kde3/share/doc*/HTML/*/common) # white listed for not existant
+        /opt/kde3/share/doc*/HTML/*/common) # white listed for not existant
             ;;
-        *,/usr/share/doc/kde/HTML/*/common) # white listed for not existant
+        /usr/share/doc/kde/HTML/*/common) # white listed for not existant
             ;;
-        *,/proc/*|*,/dev/*|*,/sys/*) # links pointing into kernel file system should be absolute
+        /proc/*|/dev/*|/sys/*) # links pointing into kernel file system should be absolute
             link_dest=$link_absolut
             ;;
         *)
