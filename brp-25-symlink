@@ -28,6 +28,44 @@ cd $RPM_BUILD_ROOT
 
 had_errors=0
 
+follow() {
+# poor man's endless recursion checker
+    follow=0
+    _follow $1
+}
+
+_follow() {
+    local file=$1
+    local base=$(basename $file)
+    local dir=$(dirname $file)
+    local link
+
+    test $(( ++follow )) -gt 16 && return 1
+    test "$dir" = "/" && return 1
+    if test -L "$dir"; then
+	link=$(readlink $dir) || return 1
+    elif test -L "./$dir"; then
+	link=$(readlink ./$dir) || return 1
+    fi
+    if test -n "$link"; then
+	if [[ $link =~ ^/ ]]; then
+	    dir=$link
+	else
+	    dir=$(dirname $dir)/$link
+	    dir=$(realpath -m $dir)
+	fi
+	if test -e ./$dir/$base || test -e $dir/$base; then
+	    echo $dir/$base
+	   return 0
+	fi
+    fi
+    if dir=$(_follow $dir) && test -e ./$dir/$base -o -e $dir/$base; then
+	echo $dir/$base
+	return 0
+    fi
+    return 1
+}
+
 while IFS="|" read link link_orig link_dest link_absolut
 do
     if test "$link" = "$link_dest"; then
@@ -61,12 +99,14 @@ do
             ;;
         *)
             if test ! -L ./"$link_absolut" && test ! -e "$link_absolut" && test ! -e ./"$link_absolut"; then
-                echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
-                echo "  $link -> $link_orig"
-                echo "Add the package providing the target to BuildRequires and Requires"
-                if [ "$NO_BRP_STALE_LINK_ERROR" != "yes" ]; then
-                    had_errors=1
-                    continue
+		if ! follow $link_absolut >/dev/null; then
+                    echo "ERROR: link target doesn't exist (neither in build root nor in installed system):"
+                    echo "  $link -> $link_orig"
+                    echo "Add the package providing the target to BuildRequires and Requires"
+                    if [ "$NO_BRP_STALE_LINK_ERROR" != "yes" ]; then
+			had_errors=1
+			continue
+		    fi
                 fi
             fi
             ;;
