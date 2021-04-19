@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
+       exit 0
+fi
+
+if [ -n "$BRP_FIPSHMAC_FILES" ] ; then
+	FIPSCHECK=$(type -p fipscheck)
+	if [ -z "$FIPSCHECK" ] ; then
+		FIPSCHECK=/usr/bin/fipscheck
+	fi
+	if [ -x "$FIPSCHECK" ] ; then
+		RES=0
+		for item in $BRP_FIPSHMAC_FILES ; do
+			$FIPSCHECK $item || RES=1
+		done
+		if [ "$RES" != "0" ] ; then
+			echo "brp-fipscheck (using $FIPSCHECK) failed"
+			exit 1
+		fi
+	else
+		echo "fipscheck ($FIPSCHECK) is not executable"
+		exit 1
+	fi
+fi
+
