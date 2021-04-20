@@ -5,21 +5,21 @@ if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
 fi
 
 if [ -n "$BRP_FIPSHMAC_FILES" ] ; then
-	FIPSCHECK=$(type -p fipscheck)
-	if [ -z "$FIPSCHECK" ] ; then
-		FIPSCHECK=/usr/bin/fipscheck
+	FIPSHMAC=$(type -p fipshmac)
+	if [ -z "$FIPSHMAC" ] ; then
+		FIPSHMAC=/usr/bin/fipshmac
 	fi
-	if [ -x "$FIPSCHECK" ] ; then
+	if [ -x "$FIPSHMAC" ] ; then
 		RES=0
 		for item in $BRP_FIPSHMAC_FILES ; do
-			$FIPSCHECK $item || RES=1
+			$FIPSHMAC $item || RES=1
 		done
 		if [ "$RES" != "0" ] ; then
-			echo "brp-fipscheck (using $FIPSCHECK) failed"
+			echo "brp-50-generate-fips-hmac (using $FIPSHMAC) failed"
 			exit 1
 		fi
 	else
-		echo "fipscheck ($FIPSCHECK) is not executable"
+		echo "fipshmac ($FIPSHMAC) is not executable"
 		exit 1
 	fi
 fi
