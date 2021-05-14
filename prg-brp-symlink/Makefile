@@ -1,5 +1,5 @@
-CXXFLAGS=-O2 -Wall
-CXX=g++
+CXXFLAGS ?= -O2 -Wall
+CXX ?= g++
 
 all: brp-symlink
 
