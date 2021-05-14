@@ -26,7 +26,7 @@ find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" \( -name "*.a" -o -name "*.ko" \) \
 sed -n -e 's/^\(.*\):[ ]*ELF.*, not stripped.*$/\1/p' |  while read f; do
 	mode="$(stat -c %a "$f")"
 	chmod u+w "$f" || :
-	strip -p --strip-debug --discard-locals -R .comment -R .note "$f" || :
+	${CROSS_COMPILE}strip -p --strip-debug --discard-locals -R .comment -R .note "$f" || :
 	chmod "$mode" "$f"
 done
 
@@ -35,7 +35,7 @@ find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" -type f -name "*.[ao]" -print | while
 	case $(file "$f") in
 	    *"current ar"*|*ELF*", not stripped"*)
 		chmod u+w "$f" || :
-		strip -p --discard-locals -R .comment -R .note -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 "$f" || :
+		${CROSS_COMPILE}strip -p --discard-locals -R .comment -R .note -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 "$f" || :
 		;;
 	    *)
 		echo "WARNING: Strange looking archive $(file $f)"

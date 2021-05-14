@@ -14,5 +14,5 @@ if [ "$NO_BRP_AR" = "true" ] ; then
 fi
 
 while read f; do
-	! file "$f" | grep -q "ar archive" || objcopy -D "$f" || true
+	! file "$f" | grep -q "ar archive" || ${CROSS_COMPILE}objcopy -D "$f" || true
 done < <(find "$RPM_BUILD_ROOT" -type f -name "*.a" -print)

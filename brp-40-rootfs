@@ -20,7 +20,7 @@ if {
 	find "$RPM_BUILD_ROOT"/{bin,sbin} -type f -exec file {} + 2>/dev/null | tee /tmp/find | \
 	sed -n -e 's/^\(.*\):[[:space:]]*ELF.*/\1/p;/\/bin\/rpm/d;/\/sbin\/install-info/d' \
 	    -e '/shared object/{/\/\(security\|evms\|libnss_\)\//d;s/^\(.*\):[[:space:]]*ELF.*/\1/p}' | \
-	xargs -r  ldd | sed -nf /usr/lib/rpm/brp-rootfs.data/ldd.sed | \
+	xargs -r ${CROSS_COMPILE}ldd | sed -nf /usr/lib/rpm/brp-rootfs.data/ldd.sed | \
 	sed -n "/\/opt/s@^\([^:]\+\):.*\(/opt/[^[:blank:]]\+\).*@binary \1 is linked against libraries in /opt (\2)@" | \
 	grep 'is linked against libraries in /opt'
     } ; then
