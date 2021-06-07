@@ -85,6 +85,9 @@ do
         /proc/*|/dev/*|/sys/*) # links pointing into kernel file system should be absolute
             link_dest=$link_absolut
             ;;
+        /usr/src/linux*) # bsc#1186710 - usrmerge in combination of fixed /lib/modules
+            link_dest=$link_absolut
+            ;;
         ${RPM_BUILD_ROOT}*)
             echo "ERROR: Link $link -> $link_orig points inside build root!"
             had_errors=1
