@@ -1,7 +1,9 @@
 #include <iostream>
 #include <iterator>
+#include <limits.h>
 #include <sstream>
 #include <string>
+#include <unistd.h>
 #include <vector>
 
 // synopsis: read from stdin lines per link
@@ -11,9 +13,12 @@
 // IFS=| link link_orig link_dest link_absolut
 
 // NOTE:
-// the actual file system content is of no concern here
+// it's important to run this with the root as cwd
+// so the link expansion is done correctly
 
 using namespace std;
+
+string buildroot = ".";
 
 string append(const string& p1, const string& p2)
 {
@@ -31,7 +36,7 @@ string append(const string& p1, const string& p2)
     return (tmp + p2);
 }
 
-vector<string> split_paths(const string &path)
+vector<string> split_paths(const string& path)
 {
     string token;
     vector<string> paths;
@@ -89,14 +94,62 @@ string relative(const string& p1, const string& p2)
     return merge_paths(paths);
 }
 
-void check_link(const string& link, const string& link_dest)
+string check_exceptions(const string& link_relative, const string& link_absolute)
 {
-    string link_dest_path = append(link, link_dest);
+    // update alternative links are special
+    if (!link_absolute.rfind("/etc/alternatives/", 0)) {
+        return link_absolute;
+    }
+    // bsc#1186710 - usrmerge in combination of hardcoded /lib/modules
+    if (!link_absolute.rfind("/usr/src/linux", 0)) {
+        return link_absolute;
+    }
+    // links pointing into kernel file system should be absolute
+    if (!link_absolute.rfind("/proc/", 0) || !link_absolute.rfind("/dev/", 0) || !link_absolute.rfind("/sys/", 0)) {
+        return link_absolute;
+    }
+    return link_relative;
+}
+
+// expand the file against root and buildroot
+string follow(const string& path)
+{
+    vector<string> paths = split_paths(path);
+    vector<string>::const_iterator it = paths.begin();
+    string new_path = "";
+    for (; it != paths.end(); it++) {
+        if (!it->length())
+            continue;
+        string tmp_path = new_path + "/" + *it;
+
+        char buffer[PATH_MAX];
+        string tmp_path_in_buildroot = buildroot + "/" + tmp_path;
+        ssize_t result = readlink(tmp_path_in_buildroot.c_str(), buffer, PATH_MAX);
+        if (result > 0) {
+            buffer[result] = 0;
+            // for absolute links within buildroot we need to recurse
+            if (buffer[0] == '/') {
+                new_path.assign(buffer);
+                for (it++; it != paths.end(); it++) {
+                    new_path += "/" + *it;
+                }
+                return follow(new_path);
+            }
+        }
+        new_path = tmp_path;
+    }
+    return path;
+}
+
+void check_link(const string& link, const string& link_old_dest)
+{
+    string link_dest_path = append(link, link_old_dest);
     string link_dest_abs = normalize(link_dest_path);
+    string link_new_dest = relative(normalize(link), link_dest_abs);
     cout << link << "|"
-         << link_dest << "|"
-         << relative(normalize(link), link_dest_abs) << "|"
-         << link_dest_abs << endl;
+         << link_old_dest << "|"
+         << check_exceptions(link_new_dest, link_dest_abs) << "|"
+         << follow(link_dest_abs) << endl;
 }
 
 void work_line(const string& line)
@@ -107,6 +160,25 @@ void work_line(const string& line)
 
 int main(int argc, char** argv)
 {
+    while (true) {
+        switch (getopt(argc, argv, "r:b:")) {
+        case '?':
+        case 'h':
+        default:
+            cerr << argv[0] << " [-b <buildroot>]\n";
+            cerr << "  buildroot defaults to .\n";
+            return -1;
+
+        case -1:
+            break;
+
+        case 'b':
+            buildroot.assign(optarg);
+            continue;
+        }
+        break;
+    }
+
     for (string line; getline(cin, line);) {
         work_line(line);
     }

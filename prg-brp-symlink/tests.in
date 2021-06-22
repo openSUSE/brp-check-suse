@@ -1374,3 +1374,7 @@ bin/vim|/usr/bin/vim
 bin/ex|/usr/bin/vim
 bin/keyctl|//usr/bin/keyctl
 a/b/c/d/link|.././../O
+etc/alternatives/subdir|/usr/lib64/libsub
+usr/lib64/libfoo.so|subdir/libfoo.so
+usr/lib64/libsub/libfoo.so|libfoo.so.0
+usr/lib64/subdir|/etc/alternatives/subdir
