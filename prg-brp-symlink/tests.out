@@ -1375,6 +1375,6 @@
 /bin/keyctl|//usr/bin/keyctl|../usr/bin/keyctl|/usr/bin/keyctl
 /a/b/c/d/link|.././../O|../../O|/a/b/O
 /etc/alternatives/subdir|/usr/lib64/libsub|../../usr/lib64/libsub|/usr/lib64/libsub
-/usr/lib64/libfoo.so|subdir/libfoo.so|subdir/libfoo.so|/usr/lib64/subdir/libfoo.so
+/usr/lib64/libfoo.so|subdir/libfoo.so|subdir/libfoo.so|/etc/alternatives/subdir/libfoo.so
 /usr/lib64/libsub/libfoo.so|libfoo.so.0|libfoo.so.0|/usr/lib64/libsub/libfoo.so.0
 /usr/lib64/subdir|/etc/alternatives/subdir|/etc/alternatives/subdir|/etc/alternatives/subdir
