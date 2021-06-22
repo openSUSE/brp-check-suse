@@ -89,13 +89,30 @@ string relative(const string& p1, const string& p2)
     return merge_paths(paths);
 }
 
-void check_link(const string& link, const string& link_dest)
+string check_exceptions(const string &link_relative, const string &link_absolute) {
+    // update alternative links are special
+    if (!link_absolute.rfind("/etc/alternatives/", 0)) {
+        return link_absolute;
+    }
+    // bsc#1186710 - usrmerge in combination of hardcoded /lib/modules
+    if (!link_absolute.rfind("/usr/src/linux", 0)) {
+        return link_absolute;
+    }
+    // links pointing into kernel file system should be absolute
+    if (!link_absolute.rfind("/proc/", 0) || !link_absolute.rfind("/dev/", 0) || !link_absolute.rfind("/sys/", 0)) {
+        return link_absolute;
+    }
+    return link_relative;
+}
+
+void check_link(const string& link, const string& link_old_dest)
 {
-    string link_dest_path = append(link, link_dest);
+    string link_dest_path = append(link, link_old_dest);
     string link_dest_abs = normalize(link_dest_path);
+    string link_new_dest = relative(normalize(link), link_dest_abs);
     cout << link << "|"
-         << link_dest << "|"
-         << relative(normalize(link), link_dest_abs) << "|"
+         << link_old_dest << "|"
+         << check_exceptions(link_new_dest, link_dest_abs) << "|"
          << link_dest_abs << endl;
 }
 
