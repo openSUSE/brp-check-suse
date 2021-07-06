@@ -41,6 +41,8 @@ do
             ;;
         /usr/share/doc/kde/HTML/*/common) # white listed for not existant
             ;;
+        /etc/alternatives/*) # white listed (ghosts)
+            ;;
         ${RPM_BUILD_ROOT}*)
             echo "ERROR: Link $link -> $link_orig points inside build root!"
             had_errors=1
