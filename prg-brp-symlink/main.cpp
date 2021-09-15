@@ -100,10 +100,6 @@ string check_exceptions(const string& link_relative, const string& link_absolute
     if (!link_absolute.rfind("/etc/alternatives/", 0)) {
         return link_absolute;
     }
-    // bsc#1186710 - usrmerge in combination of hardcoded /lib/modules
-    if (!link_absolute.rfind("/usr/src/linux", 0)) {
-        return link_absolute;
-    }
     // links pointing into kernel file system should be absolute
     if (!link_absolute.rfind("/proc/", 0) || !link_absolute.rfind("/dev/", 0) || !link_absolute.rfind("/sys/", 0)) {
         return link_absolute;
