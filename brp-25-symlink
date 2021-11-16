@@ -72,7 +72,7 @@ do
         echo "INFO: relinking $link -> $link_dest (was $link_orig)"
         # we need to remove the link first because it may point to a directory
         # and then semantic changes
-        rm ./"$link" && ln -s "$link_dest" ./"$link"
+        rm ./"$link" && ln -s -- "$link_dest" ./"$link"
     fi
 done < <(find . -type l -printf '%P|%l\n' | sort | brp-symlink.prg)
 
