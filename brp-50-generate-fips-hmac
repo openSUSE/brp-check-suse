@@ -5,9 +5,11 @@ if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
 fi
 
 if [ -n "$BRP_FIPSHMAC_FILES" ] ; then
+	# this is the fipscheck version
 	FIPSHMAC=$(type -p fipshmac)
 	if [ -z "$FIPSHMAC" ] ; then
-		FIPSHMAC=/usr/bin/fipshmac
+		# this is the libkcapi-tools version (more modern)
+		FIPSHMAC=/usr/libexec/libkcapi/fipshmac
 	fi
 	if [ -x "$FIPSHMAC" ] ; then
 		RES=0
