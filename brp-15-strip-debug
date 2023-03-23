@@ -35,7 +35,7 @@ find "$RPM_BUILD_ROOT" "${FIND_IGNORE[@]}" -type f -name "*.[ao]" -print | while
 	case $(file "$f") in
 	    *"current ar"*|*ELF*", not stripped"*)
 		chmod u+w "$f" || :
-		${CROSS_COMPILE}strip -p --discard-locals -R .comment -R .note -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 "$f" || :
+		${CROSS_COMPILE}strip -p --discard-locals -R .comment -R .note -R .gnu.lto_* -R .gnu.debuglto_* -R __patchable_function_entries -N __gnu_lto_v1 "$f" || :
 		;;
 	    *)
 		echo "WARNING: Strange looking archive $(file $f)"
