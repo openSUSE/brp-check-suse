@@ -80,7 +80,7 @@ string relative(const string& p1, const string& p2)
     vector<string>::const_iterator it1 = paths1.begin();
     vector<string>::const_iterator it2 = paths2.begin();
     // first remove the common parts
-    while (it1 != paths1.end() && *it1 == *it2) {
+    while (it1 != paths1.end() && it2 != paths2.end() && *it1 == *it2) {
         it1++;
         it2++;
     }
