@@ -27,6 +27,9 @@ LC_TIME=POSIX
 cd $RPM_BUILD_ROOT
 
 had_errors=0
+tmpfile=$(mktemp) || exit 1
+trap 'rm -f "$tmpfile"' EXIT
+find . -type l -printf '%P|%l\n' | sort | brp-symlink.prg > "$tmpfile" || exit 1
 
 while IFS="|" read link link_orig link_dest link_absolut
 do
@@ -74,7 +77,7 @@ do
         # and then semantic changes
         rm ./"$link" && ln -s -- "$link_dest" ./"$link"
     fi
-done < <(find . -type l -printf '%P|%l\n' | sort | brp-symlink.prg)
+done < "$tmpfile"
 
 if test "$had_errors" = 1; then
     exit 1
